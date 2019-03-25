@@ -1,0 +1,2 @@
+class Torso < ApplicationRecord
+end
