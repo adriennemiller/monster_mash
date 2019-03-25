@@ -1,0 +1,2 @@
+class TorsosController < ApplicationController
+end

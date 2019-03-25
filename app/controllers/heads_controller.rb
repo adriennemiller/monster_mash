@@ -1,0 +1,2 @@
+class HeadsController < ApplicationController
+end
