@@ -1,0 +1,13 @@
+<h1>Create New Monster</h1>
+<%= form_for(@monster) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.collection_select :head_id, Head.all, :id, :id %>
+  <br>
+  <%= f.collection_select :torso_id, Torso.all, :id, :id %>
+  <br>
+  <%= f.collection_select :leg_id, Leg.all, :id, :id %>
+  <br>
+  <%= f.submit %>
+<% end %>

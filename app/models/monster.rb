@@ -1,6 +1,6 @@
 class Monster < ApplicationRecord
   belongs_to :user
-  belongs_to :head
-  belongs_to :torso
-  belongs_to :leg
+  belongs_to :head, optional: true
+  belongs_to :torso, optional: true
+  belongs_to :leg, optional: true
 end
