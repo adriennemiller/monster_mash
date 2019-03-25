@@ -1,0 +1,6 @@
+<h1>Monsters</h1>
+<ul>
+  <% @monsters.all.each do |monster| %>
+    <li><%= link_to monster.name, monster %></li>
+  <% end %>
+</ul>

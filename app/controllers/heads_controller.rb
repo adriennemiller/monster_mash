@@ -1,2 +1,0 @@
-class HeadsController < ApplicationController
-end
