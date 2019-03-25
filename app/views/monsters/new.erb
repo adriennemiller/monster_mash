@@ -1,19 +1,21 @@
-<h1>Create New Monster</h1>
-<%= form_for(@monster) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <br>
-  <%= f.label :head_id, "Head" %>
-  <%= f.collection_select :head_id, Head.all, :id, :id %>
-  <%# <%= image_tag "heads/#{@monster.head_id}.jpg" %>  
-  <br>
-  <%= f.label :torso_id, "Torso" %>
-  <%= f.collection_select :torso_id, Torso.all, :id, :id %>
-  <%# <%= image_tag "torsos/#{@monster.torso_id}.jpg" %>  
-  <br>
-  <%= f.label :leg_id, "Leg" %>
-  <%= f.collection_select :leg_id, Leg.all, :id, :id %>
-  <%# <%= image_tag "legs/#{@monster.leg_id}.jpg" %>  
-  <br>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <h1>Create New Monster</h1>
+  <%= form_for(@monster) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <br>
+    <%= f.label :head_id, "Head" %>
+    <%= f.collection_select :head_id, Head.all, :id, :id %>
+    <%# <%= image_tag "heads/#{@monster.head_id}.jpg" %>
+    <br>
+    <%= f.label :torso_id, "Torso" %>
+    <%= f.collection_select :torso_id, Torso.all, :id, :id %>
+    <%# <%= image_tag "torsos/#{@monster.torso_id}.jpg" %>
+    <br>
+    <%= f.label :leg_id, "Leg" %>
+    <%= f.collection_select :leg_id, Leg.all, :id, :id %>
+    <%# <%= image_tag "legs/#{@monster.leg_id}.jpg" %>
+    <br>
+    <%= f.submit %>
+  <% end %>
+</div>
