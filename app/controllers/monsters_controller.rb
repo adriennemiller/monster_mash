@@ -9,6 +9,7 @@ class MonstersController < ApplicationController
   end
 
   def new
+    @monster = Monster.new
   end
 
   def create

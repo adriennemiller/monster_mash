@@ -21,20 +21,15 @@ boo = cody.monsters.create!(name: 'Boo')
 st = niky.monsters.create!(name: 'Storm Trooper')
 
 # BODY PARTS
-sullivan.create_leg
-sullivan.create_torso
-sullivan.create_head
-mike.create_leg
-mike.create_torso
-mike.create_head
-vim.create_leg
-vim.create_torso
-vim.create_head
-boo.create_leg
-boo.create_torso
-boo.create_head
-st.create_leg
-st.create_torso
-st.create_head
+Monster.all.each do |m| 
+  h = Head.create
+  t = Torso.create
+  l = Leg.create 
+  params = {head_id: h.id, torso_id: t.id, leg_id: l.id}
+
+  m.update(params)
+end
+  
+
 
 

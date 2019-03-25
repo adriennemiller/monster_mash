@@ -3,10 +3,13 @@
   <%= f.label :name %>
   <%= f.text_field :name %>
   <br>
+  <%= f.label :head_id, "Head "%>
   <%= f.collection_select :head_id, Head.all, :id, :id %>
   <br>
+  <%= f.label :torso_id, "Torso "%>
   <%= f.collection_select :torso_id, Torso.all, :id, :id %>
   <br>
+  <%= f.label :leg_id, "Leg "%>
   <%= f.collection_select :leg_id, Leg.all, :id, :id %>
   <br>
   <%= f.submit %>
