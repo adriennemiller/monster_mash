@@ -15,5 +15,10 @@ module MonsterMash
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    
+    # Images for Body Parts
+    config.assets.paths << Rails.root.join("images", "heads")
+    config.assets.paths << Rails.root.join("images", "torsos")
+    config.assets.paths << Rails.root.join("images", "legs")
   end
 end
