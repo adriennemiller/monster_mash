@@ -10,8 +10,6 @@
     <%= f.number_field :head_x %>
     <%= f.label :head_y, "Y" %>
     <%= f.number_field :head_y %>
-    <%= f.label :head_scale, "Scale" %>
-    <%= f.number_field :head_scale, {step: 0.1} %>
     <br>
     <%= f.label :torso_id, "Torso" %>
   
@@ -20,8 +18,6 @@
     <%= f.number_field :torso_x %>
     <%= f.label :torso_y, "Y" %>
     <%= f.number_field :torso_y %>
-    <%= f.label :torso_scale, "Scale" %>
-    <%= f.number_field :torso_scale, {step: 0.1} %>
     <br>
     <%= f.label :leg_id, "Leg" %>
    
@@ -30,38 +26,34 @@
     <%= f.number_field :leg_x %>
     <%= f.label :leg_y, "Y" %>
     <%= f.number_field :leg_y %>
-    <%= f.label :leg_scale, "Scale" %>
-    <%= f.number_field :leg_scale, {step: 0.1} %>
     <br>
     <%= f.submit 'Update'%>
   <% end %>
 
+  
   <hr>
 
   <div class="monster-canvas">
-    <div class="body-part head"
-      style="
-        left: <%= @monster.head_x %>px;
-        top: <%= @monster.head_y %>px;
-        transform: scale(<%= @monster.head_scale %>);
-      "
-    >
+      <img class="body-part head"
+        style="
+          left: <%= @monster.head_x %>%;
+          top: <%= @monster.head_y %>%;
+        "
+        src="<%= asset_path("heads/#{@monster.head.filename}_#{@monster.head.color}.svg") %>"
+      />
+      <img class="body-part torso"
+        style="
+          left: <%= @monster.torso_x %>%;
+          top: <%= @monster.torso_y %>%;
+        "
+        src="<%= asset_path("torsos/#{@monster.torso.filename}_#{@monster.torso.color}.svg") %>"
+      />
+      <img class="body-part leg"
+        style="
+          left: <%= @monster.leg_x %>%;
+          top: <%= @monster.leg_y %>%;
+        "
+        src="<%= asset_path("legs/#{@monster.leg.filename}_#{@monster.leg.color}.svg") %>"
+      >
     </div>
-    <div class="body-part torso"
-      style="
-        left: <%= @monster.torso_x %>px;
-        top: <%= @monster.torso_y %>px;
-        transform: scale(<%= @monster.torso_scale %>);
-      "
-    >
-    </div>
-    <div class="body-part leg"
-      style="
-        left: <%= @monster.leg_x %>px;
-        top: <%= @monster.leg_y %>px;
-        transform: scale(<%= @monster.leg_scale %>);
-      "
-    >
-    </div>
-  </div>
 </div>
