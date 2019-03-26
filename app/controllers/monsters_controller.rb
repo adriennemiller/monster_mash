@@ -1,5 +1,6 @@
 class MonstersController < ApplicationController
-  before_action :get_monster, only: [:show, :create, :edit, :destroy]
+  before_action :set_monster, only: [:show, :create, :edit, :update, :destroy]
+  before_action :set_body_parts, only: [:new, :edit]
 
   def index
     @monsters = Monster.all
@@ -16,6 +17,7 @@ class MonstersController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
@@ -30,7 +32,13 @@ class MonstersController < ApplicationController
     params.require(:monster).permit!
   end
 
-  def get_monster
+  def set_monster
     @monster = Monster.find(params[:id])
+  end
+
+  def set_body_parts
+    @heads = BodyPart.where(section: "head")
+    @torsos = BodyPart.where(section: "torso")
+    @legs = BodyPart.where(section: "leg")
   end
 end

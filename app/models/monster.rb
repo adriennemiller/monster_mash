@@ -1,6 +1,6 @@
 class Monster < ApplicationRecord
   belongs_to :user
-  belongs_to :body_part, class_name: 'Head', foreign_key: :head_id
-  belongs_to :body_part, class_name: 'Torso', foreign_key: :torso_id
-  belongs_to :body_part, class_name: 'Leg', foreign_key: :leg_id
+  belongs_to :head, class_name: 'BodyPart', foreign_key: :head_id, optional: true
+  belongs_to :torso, class_name: 'BodyPart', foreign_key: :torso_id, optional: true
+  belongs_to :leg, class_name: 'BodyPart', foreign_key: :leg_id, optional: true
 end
