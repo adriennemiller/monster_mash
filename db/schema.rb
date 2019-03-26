@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2019_03_26_002438) do
   enable_extension "plpgsql"
 
   create_table "body_parts", force: :cascade do |t|
-    t.string "type"
+    t.string "section"
     t.string "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
