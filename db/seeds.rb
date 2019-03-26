@@ -22,9 +22,9 @@ st = niky.monsters.create!(name: 'Storm Trooper')
 
 # BODY PARTS
 Monster.all.each do |m| 
-  h = Head.create
-  t = Torso.create
-  l = Leg.create 
+  h = BodyPart.create(section: "head")
+  t = BodyPart.create(section: "torso")
+  l = BodyPart.create(section: "leg")
   params = {head_id: h.id, torso_id: t.id, leg_id: l.id}
 
   m.update(params)
