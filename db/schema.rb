@@ -10,17 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_25_183911) do
+ActiveRecord::Schema.define(version: 2019_03_26_002438) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "heads", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "legs", force: :cascade do |t|
+  create_table "body_parts", force: :cascade do |t|
+    t.string "type"
+    t.string "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -33,11 +30,8 @@ ActiveRecord::Schema.define(version: 2019_03_25_183911) do
     t.integer "head_id"
     t.integer "torso_id"
     t.integer "leg_id"
-  end
-
-  create_table "torsos", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "time_last_fed"
+    t.integer "happiness"
   end
 
   create_table "users", force: :cascade do |t|
