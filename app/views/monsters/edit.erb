@@ -5,30 +5,32 @@
     <%= f.text_field :name %>
     <br>
     <%= f.label :head_id, "Head" %>
-   
-    <%= f.label :head_x %>
+    <%= f.collection_select :head_id, BodyPart.where(section: "head"), :id, :id %><br>
+    <%= f.label :head_x, "X"  %>
     <%= f.number_field :head_x %>
-    <%= f.label :head_y %>
+    <%= f.label :head_y, "Y" %>
     <%= f.number_field :head_y %>
-    <%= f.label :head_scale %>
+    <%= f.label :head_scale, "Scale" %>
     <%= f.number_field :head_scale, {step: 0.1} %>
     <br>
     <%= f.label :torso_id, "Torso" %>
   
-    <%= f.label :torso_x %>
+    <%= f.label :torso_x, "X" %>
+    <%= f.collection_select :torso_id, BodyPart.where(section: "torso"), :id, :id %><br>
     <%= f.number_field :torso_x %>
-    <%= f.label :torso_y %>
+    <%= f.label :torso_y, "Y" %>
     <%= f.number_field :torso_y %>
-    <%= f.label :torso_scale %>
+    <%= f.label :torso_scale, "Scale" %>
     <%= f.number_field :torso_scale, {step: 0.1} %>
     <br>
     <%= f.label :leg_id, "Leg" %>
    
-    <%= f.label :leg_x %>
+    <%= f.label :leg_x, "X" %>
+    <%= f.collection_select :leg_id, BodyPart.where(section: "leg"), :id, :id %><br>
     <%= f.number_field :leg_x %>
-    <%= f.label :leg_y %>
+    <%= f.label :leg_y, "Y" %>
     <%= f.number_field :leg_y %>
-    <%= f.label :leg_scale %>
+    <%= f.label :leg_scale, "Scale" %>
     <%= f.number_field :leg_scale, {step: 0.1} %>
     <br>
     <%= f.submit 'Update'%>
@@ -41,7 +43,7 @@
       style="
         left: <%= @monster.head_x %>px;
         top: <%= @monster.head_y %>px;
-        transform: scale(<% @monster.head_scale %>);
+        transform: scale(<%= @monster.head_scale %>);
       "
     >
     </div>
@@ -49,7 +51,7 @@
       style="
         left: <%= @monster.torso_x %>px;
         top: <%= @monster.torso_y %>px;
-        transform: scale(<% @monster.torso_scale %>);
+        transform: scale(<%= @monster.torso_scale %>);
       "
     >
     </div>
@@ -57,7 +59,7 @@
       style="
         left: <%= @monster.leg_x %>px;
         top: <%= @monster.leg_y %>px;
-        transform: scale(<% @monster.leg_scale %>);
+        transform: scale(<%= @monster.leg_scale %>);
       "
     >
     </div>
