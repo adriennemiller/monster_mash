@@ -5,14 +5,61 @@
     <%= f.text_field :name %>
     <br>
     <%= f.label :head_id, "Head" %>
-    <%= f.collection_select :head_id, @heads, :id, :id %>
+   
+    <%= f.label :head_x %>
+    <%= f.number_field :head_x %>
+    <%= f.label :head_y %>
+    <%= f.number_field :head_y %>
+    <%= f.label :head_scale %>
+    <%= f.number_field :head_scale, {step: 0.1} %>
     <br>
     <%= f.label :torso_id, "Torso" %>
-    <%= f.collection_select :torso_id, @torsos, :id, :id %>
+  
+    <%= f.label :torso_x %>
+    <%= f.number_field :torso_x %>
+    <%= f.label :torso_y %>
+    <%= f.number_field :torso_y %>
+    <%= f.label :torso_scale %>
+    <%= f.number_field :torso_scale, {step: 0.1} %>
     <br>
     <%= f.label :leg_id, "Leg" %>
-    <%= f.collection_select :leg_id, @legs, :id, :id %>
+   
+    <%= f.label :leg_x %>
+    <%= f.number_field :leg_x %>
+    <%= f.label :leg_y %>
+    <%= f.number_field :leg_y %>
+    <%= f.label :leg_scale %>
+    <%= f.number_field :leg_scale, {step: 0.1} %>
     <br>
-    <%= f.submit %>
+    <%= f.submit 'Update'%>
   <% end %>
+
+  <hr>
+
+  <div class="monster-canvas">
+    <div class="body-part head"
+      style="
+        left: <%= @monster.head_x %>px;
+        top: <%= @monster.head_y %>px;
+        transform: scale(<% @monster.head_scale %>);
+      "
+    >
+    </div>
+    <div class="body-part torso"
+      style="
+        left: <%= @monster.torso_x %>px;
+        top: <%= @monster.torso_y %>px;
+        transform: scale(<% @monster.torso_scale %>);
+      "
+    >
+    </div>
+    <div class="body-part leg"
+      style="
+        left: <%= @monster.leg_x %>px;
+        top: <%= @monster.leg_y %>px;
+        transform: scale(<% @monster.leg_scale %>);
+      "
+    >
+    </div>
+  </div>
 </div>

@@ -21,6 +21,8 @@ class MonstersController < ApplicationController
   end
 
   def update
+    @monster.update(monster_params)
+    render :edit
   end
 
   def destroy
@@ -28,7 +30,7 @@ class MonstersController < ApplicationController
 
   private
 
-  def monster_params
+  def monster_params()
     params.require(:monster).permit!
   end
 

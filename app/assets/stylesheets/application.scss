@@ -14,3 +14,40 @@
 
 
 @import "bootstrap";
+
+
+.monster-canvas {
+  position: relative;
+  width: 400px;
+  height: 400px;
+}
+
+.body-part {
+  position: absolute;
+}
+
+.head {
+  width: 125px;
+  height: 75px;
+  background-color: rgb(67, 52, 153);
+  border-radius: 150px 150px 10px 10px;
+  border: 5px solid rgb(67, 52, 153);
+  z-index: 3;
+}
+
+.torso {
+  width: 175px;
+  height: 135px;
+  background-color: rgb(52, 71, 153);
+  border-radius: 125px;
+  border: 5px solid rgb(52, 71, 153);
+  z-index: 2;
+}
+
+.leg {
+  width: 125px;
+  height: 100px;
+  background-color: rgb(124, 52, 153);
+  border: 5px solid rgb(124, 52, 153);
+  z-index: 1;
+}

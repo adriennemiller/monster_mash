@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_26_002438) do
+ActiveRecord::Schema.define(version: 2019_03_26_071725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,15 @@ ActiveRecord::Schema.define(version: 2019_03_26_002438) do
     t.integer "leg_id"
     t.datetime "time_last_fed"
     t.integer "happiness"
+    t.integer "head_x"
+    t.integer "head_y"
+    t.float "head_scale"
+    t.integer "torso_x"
+    t.integer "torso_y"
+    t.float "torso_scale"
+    t.integer "leg_x"
+    t.integer "leg_y"
+    t.float "leg_scale"
   end
 
   create_table "users", force: :cascade do |t|
