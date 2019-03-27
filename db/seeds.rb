@@ -5,12 +5,12 @@
 #
 #   movies = Movie.create!([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create!(name: 'Luke', movie: movies.first)
-
-# USERS
-adrienne = User.find_or_create_by(name: 'Adrienne')
-brian = User.find_or_create_by(name: 'Brian')
-cody = User.find_or_create_by(name: 'Cody')
-niky = User.find_or_create_by(name: 'Niky')
+include BCrypt
+#USERS
+adrienne = User.find_or_create_by!(name: 'ad', password_digest: Password.create('123'))
+brian = User.find_or_create_by!(name: 'br', password_digest: Password.create('abc'))
+cody = User.find_or_create_by!(name: 'co', password_digest: Password.create('321'))
+niky = User.find_or_create_by!(name: 'ni', password_digest: Password.create('cba'))
 
 # MONSTERS
 sullivan = adrienne.monsters.find_or_create_by!(name: 'Sullivan')
@@ -42,8 +42,3 @@ Monster.all.each do |m|
   params = {head_id: h.id, torso_id: t.id, leg_id: l.id}
   m.update(params)
 end
-
-
-
-
-
