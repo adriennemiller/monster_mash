@@ -7,18 +7,12 @@
 #   Character.create!(name: 'Luke', movie: movies.first)
 
 # USERS
-adrienne = User.find_or_create_by(name: 'Adrienne')
-brian = User.find_or_create_by(name: 'Brian')
-cody = User.find_or_create_by(name: 'Cody')
-niky = User.find_or_create_by(name: 'Niky')
+include BCrypt
 
-# MONSTERS
-sullivan = adrienne.monsters.find_or_create_by!(name: 'Sullivan')
-mike = adrienne.monsters.find_or_create_by!(name: 'Mike')
-vim = brian.monsters.find_or_create_by!(name: 'Vim')
-randal = brian.monsters.find_or_create_by!(name: 'Randal')
-boo = cody.monsters.find_or_create_by!(name: 'Boo')
-st = niky.monsters.find_or_create_by!(name: 'Storm Trooper')
+adrienne = User.find_or_create_by!(name: 'ad', password_digest: Password.create('123'))
+brian = User.find_or_create_by!(name: 'br', password_digest: Password.create('abc'))
+cody = User.find_or_create_by!(name: 'co', password_digest: Password.create('321'))
+niky = User.find_or_create_by!(name: 'ni', password_digest: Password.create('cba'))
 
 # CREATE BODY PARTS FROM IMAGES
 ["head", "torso", "leg"].each do |section|
@@ -34,16 +28,45 @@ st = niky.monsters.find_or_create_by!(name: 'Storm Trooper')
   end
 end
 
-# GIVE MONSTERS RANDOM BODY PARTS
-Monster.all.each do |m|
-  h = BodyPart.where(section: "head").sample
-  t = BodyPart.where(section: "torso").sample
-  l = BodyPart.where(section: "leg").sample
-  params = {head_id: h.id, torso_id: t.id, leg_id: l.id}
-  m.update(params)
+# MONSTERS
+sullivan = adrienne.monsters.find_or_create_by!(create_monster_from_name('Sullivan'))
+mike = adrienne.monsters.find_or_create_by!(create_monster_from_name('Mike'))
+vim = brian.monsters.find_or_create_by!(create_monster_from_name('Vim'))
+randal = brian.monsters.find_or_create_by!(create_monster_from_name('Randal'))
+boo = cody.monsters.find_or_create_by!(create_monster_from_name('Boo'))
+st = niky.monsters.find_or_create_by!(create_monster_from_name('Storm Trooper'))
+
+# Create random monsters
+def create_monster_from_name(name)
+  Monster.create(
+      name: name,
+  
+      # face_id: BodyPart.where(section: 'face').first.id,
+      # face_x: 0,
+      # face_y: 0,
+      # face_scale_x: 1.0,
+      # face_scale_y: 1.0,
+
+      head_id: Head.where(section: 'head').sample.id,
+      head_x: 400/3,
+      head_y: 0,
+      head_scale_x: 1.0,
+      head_scale_y: 1.0,
+
+      torso_id: Torso.where(section: 'torso').sample.id,
+      torso_x: 400/3,
+      torso_y: 400/3 - 4,
+      torso_scale_x: 1.0,
+      torso_scale_y: 1.0,
+
+      leg_id: Leg.where(section: 'leg').sample.id,
+      leg_x: 400/3,
+      leg_y: 800/3 - 8,
+      leg_scale_x: 1.0,
+      leg_scale_y: 1.0,
+
+      happiness: 10,
+      time_last_fed: DateTime.now
+    )
 end
-
-
-
-
 

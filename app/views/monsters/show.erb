@@ -1,10 +1,28 @@
-<div class= "body-padding">
-<div class="container">
-<h1><%= @monster.name %><h2>
- <div class="monster-canvas">
-        <img
-          id="head"
-          class="body-part head draggable"
+<div class="container monsters-show">
+  <div class="row">
+    <div class="col-lg">
+      <div class="card">
+        <div class="card-header">
+          <h1><%= @monster.name %></h1>
+        </div>
+        <div class="card-body">
+          <p>Mood: <%= @monster.get_mood %></p>
+          <p class="card-text"><small class="text-muted">Last fed <%= @monster.get_time_elapsed_since_last_fed %> ago</small></p>
+        </div>
+        <div class="card-body">
+          <%= form_for(@monster) do |f| %>
+            <%= f.hidden_field :time_last_fed, value: DateTime.now %>
+            <%= f.submit 'Feed', class: "btn btn-primary" %>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="monster-canvas">
+        <img 
+          id="head" 
+          class="body-part head"
           style="
             left: <%= @monster.head_x %>px;
             top: <%= @monster.head_y %>px;
@@ -21,9 +39,9 @@
           "
           src="<%= asset_path("heads/#{@monster.head.filename}.svg") %>"
         />
-        <img
+        <img 
           id="torso"
-          class="body-part torso draggable"
+          class="body-part torso"
           style="
             left: <%= @monster.torso_x %>px;
             top: <%= @monster.torso_y %>px;
@@ -40,9 +58,9 @@
           "
           src="<%= asset_path("torsos/#{@monster.torso.filename}.svg") %>"
         />
-        <img
-          id="leg"
-          class="body-part leg draggable"
+        <img 
+          id="leg" 
+          class="body-part leg"
           style="
             left: <%= @monster.leg_x %>px;
             top: <%= @monster.leg_y %>px;
@@ -59,5 +77,8 @@
           "
           src="<%= asset_path("legs/#{@monster.leg.filename}.svg") %>"
         >
-      </div>
+      </div>  
+    </div>
+  </div>
 </div>
+
