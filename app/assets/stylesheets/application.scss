@@ -11,9 +11,8 @@
  * It is generally better to create a new file per style scope.
  *
  */
-
-
-
+//*= require jquery-ui/draggable
+//*= require jquery-ui/slider
 @import "bootstrap";
 
 .jumbotron{
@@ -29,4 +28,42 @@
 
 #top-padding {
   padding-top: 50px;
+}
+
+.monster-canvas {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  border: 2px solid red;
+}
+
+.body-part {
+  position: absolute;
+  width: 33%;
+  height: 33%;
+}
+
+.head {
+  z-index: 3;
+}
+
+.torso {
+  z-index: 2;
+}
+
+.leg {
+  z-index: 1;
+}
+
+.form {
+  display: flex;
+}
+
+.form-block {
+  padding: 1em;
+}
+
+.slider {
+  display: inline-block;
+  margin-right: 0.5em;
 }
