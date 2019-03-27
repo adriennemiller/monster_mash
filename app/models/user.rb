@@ -1,4 +1,6 @@
 class User < ApplicationRecord
   has_many :monsters
-  # add validations
+  validates :name, {presence: true, uniqueness: true} 
+  has_secure_password
+
 end

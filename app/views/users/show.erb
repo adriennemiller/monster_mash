@@ -1,9 +1,11 @@
-<div class="container">
-<head>
-  <title>User Page</title>
-</head>
-<body>
+<div class="container body-padding">
+  <div>
   <label><h1><%= @user.name %></h1></label>
   <%= link_to "Edit User", edit_user_path(@user) %>
-</body>
+  </div>
 </div>
+
+
+  <% @user.monsters.each do |monster| %>
+  <li><%= link_to "#{monster.name}", monster_path(monster) %>
+  <% end %>”

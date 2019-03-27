@@ -1,0 +1,30 @@
+<div class= "body-padding">
+<% if flash[:message] %>
+  <div class="alert alert-danger" role="alert">
+  <%= flash[:message] %>
+  </div>
+<% end %>
+
+<div class= "container col-md-4">
+<div class= "card">
+  <h5 class="card-header info-color white-text text-center py-4">Login</h5>
+<div class="card-body">
+<%= form_tag login_path, :html => {:class => "form-horizontal center"} do%>
+      <div class="form-group">
+        <%= label_tag :name, "Username:", class: "col-md-4 control-label" %>
+          <%= text_field_tag :name %>
+            </div>
+          <div class="form-group">
+          <%= label_tag :password, "Password:", class: "col-md-4 control-label" %>
+          <%= password_field_tag :password %>
+      </div>
+      <%= submit_tag "Login", class: "btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" %>
+ <% end %>
+  </div>
+</div>
+</div>
+<br>
+<div class= "container col-md-4">
+New to Monster Mash? <%= link_to "Create an account", new_user_path%>
+</div>
+</div>

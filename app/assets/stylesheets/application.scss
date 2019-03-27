@@ -16,6 +16,17 @@
 
 @import "bootstrap";
 
-body {
-  padding-top: 80px;
+.jumbotron{
+	background-image: url("background.svg");
+	background-size: cover;
+	background-repeat: no-repeat;
+  min-height: 500px;
+}
+
+.body-padding {
+  margin-top: 80px;
+}
+
+#top-padding {
+  padding-top: 50px;
 }

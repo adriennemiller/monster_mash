@@ -1,6 +1,8 @@
 class MonstersController < ApplicationController
+  skip_before_action :authenticate_user, only: [:index, :home, :show]
   before_action :set_monster, only: [:show, :create, :edit, :update, :destroy]
   before_action :set_body_parts, only: [:new, :edit]
+
 
   def index
     @monsters = Monster.all
