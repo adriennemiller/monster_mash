@@ -7,52 +7,21 @@
 <hr>
 
   <div class="monster-canvas">
-    <img class="body-part head"
-      style="
-        left: <%= @monster.head_x %>px;
-        top: <%= @monster.head_y %>px;
-        transform: scale(<%= @monster.head_scale %>);
-      "
-      src="<%= asset_path("heads/#{@monster.head.filename}_#{@monster.head.color}.svg") %>"
-    />
-    <img class="body-part torso"
-      style="
-        left: <%= @monster.torso_x %>px;
-        top: <%= @monster.torso_y %>px;
-        transform: scale(<%= @monster.torso_scale %>);
-      "
-      src="<%= asset_path("torsos/#{@monster.torso.filename}_#{@monster.torso.color}.svg") %>"
-    />
-    <img class="body-part leg"
-      style="
-        left: <%= @monster.leg_x %>px;
-        top: <%= @monster.leg_y %>px;
-        transform: scale(<%= @monster.leg_scale %>);
-      "
-      src="<%= asset_path("legs/#{@monster.leg.filename}_#{@monster.leg.color}.svg") %>"
-    >
-  </div>
-
-  <hr>
-
-  <hr>
-
-  <div class="monster-canvas">
-      <img class="body-part head"
+      <img class="body-part head draggable"
         style="
           left: <%= @monster.head_x %>px;
           top: <%= @monster.head_y %>px;
         "
         src="<%= asset_path("heads/#{@monster.head.filename}_#{@monster.head.color}.svg") %>"
       />
-      <img class="body-part torso"
+      <img class="body-part torso draggable"
         style="
           left: <%= @monster.torso_x %>px;
           top: <%= @monster.torso_y %>px;
         "
         src="<%= asset_path("torsos/#{@monster.torso.filename}_#{@monster.torso.color}.svg") %>"
       />
-      <img class="body-part leg"
+      <img class="body-part leg draggable"
         style="
           left: <%= @monster.leg_x %>px;
           top: <%= @monster.leg_y %>px;

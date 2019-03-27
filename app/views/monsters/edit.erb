@@ -1,3 +1,7 @@
+<script type="text/javascript">
+
+</script>
+
 <div class="container">
   <h1>Edit <%= @monster.name %></h1>
   <%= form_for(@monster) do |f| %>
@@ -6,7 +10,7 @@
     <br>
     <%= f.label :head_id, "Head" %>
     <%= f.collection_select :head_id, BodyPart.where(section: "head"), :id, :id %><br>
-    <%= f.label :head_x, "X"  %>
+    <%= f.label :head_x, "X" %>
     <%= f.number_field :head_x %>
     <%= f.label :head_y, "Y" %>
     <%= f.number_field :head_y %>
@@ -30,30 +34,30 @@
     <%= f.submit 'Update'%>
   <% end %>
 
-  
   <hr>
-
+  
   <div class="monster-canvas">
-      <img class="body-part head"
+      <img id="head" class="body-part head draggable"
         style="
-          left: <%= @monster.head_x %>%;
-          top: <%= @monster.head_y %>%;
+          left: <%= @monster.head_x %>px;
+          top: <%= @monster.head_y %>px;
         "
         src="<%= asset_path("heads/#{@monster.head.filename}_#{@monster.head.color}.svg") %>"
       />
-      <img class="body-part torso"
+      <img id="torso" class="body-part torso draggable"
         style="
-          left: <%= @monster.torso_x %>%;
-          top: <%= @monster.torso_y %>%;
+          left: <%= @monster.torso_x %>px;
+          top: <%= @monster.torso_y %>px;
         "
         src="<%= asset_path("torsos/#{@monster.torso.filename}_#{@monster.torso.color}.svg") %>"
       />
-      <img class="body-part leg"
+      <img id="leg" class="body-part leg draggable"
         style="
-          left: <%= @monster.leg_x %>%;
-          top: <%= @monster.leg_y %>%;
+          left: <%= @monster.leg_x %>px;
+          top: <%= @monster.leg_y %>px;
         "
         src="<%= asset_path("legs/#{@monster.leg.filename}_#{@monster.leg.color}.svg") %>"
       >
     </div>
 </div>
+
