@@ -1,5 +1,5 @@
 class MonstersController < ApplicationController
-  before_action :set_monster, only: [:show, :create, :edit, :update, :destroy]
+  before_action :set_monster, only: [:show, :edit, :update, :destroy]
   before_action :set_body_parts, only: [:new, :edit]
 
   def index
@@ -10,10 +10,46 @@ class MonstersController < ApplicationController
   end
 
   def new
-    @monster = Monster.new
+    # Default values
+    @monster = Monster.new(
+      # face_id: BodyPart.where(section: 'face').first.id,
+      # face_x: 0,
+      # face_y: 0,
+      # face_scale_x: 1.0,
+      # face_scale_y: 1.0,
+
+      head_id: @heads.third.id,
+      head_x: 400/3,
+      head_y: 0,
+      head_scale_x: 1.0,
+      head_scale_y: 1.0,
+
+      torso_id: @torsos.first.id,
+      torso_x: 400/3,
+      torso_y: 400/3 - 4,
+      torso_scale_x: 1.0,
+      torso_scale_y: 1.0,
+
+      leg_id: @legs.first.id,
+      leg_x: 400/3,
+      leg_y: 800/3 - 8,
+      leg_scale_x: 1.0,
+      leg_scale_y: 1.0,
+      
+      happiness: 10,
+      time_last_fed: DateTime.now
+    ) 
   end
 
   def create
+    user = User.find_by(id: session[:user_id])
+    @monster = user.monsters.build(monster_params)
+
+    if @monster.save
+      redirect_to @monster
+    else
+      render :new
+    end
   end
 
   def edit
@@ -21,6 +57,11 @@ class MonstersController < ApplicationController
   end
 
   def update
+    if @monster.update(monster_params)
+      redirect_to @monster
+    else
+      render :edit
+    end
   end
 
   def destroy

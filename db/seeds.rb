@@ -7,29 +7,43 @@
 #   Character.create!(name: 'Luke', movie: movies.first)
 
 # USERS
-adrienne = User.create!(name: 'Adrienne')
-brian = User.create!(name: 'Brian')
-cody = User.create!(name: 'Cody')
-niky = User.create!(name: 'Niky')
+adrienne = User.find_or_create_by(name: 'Adrienne')
+brian = User.find_or_create_by(name: 'Brian')
+cody = User.find_or_create_by(name: 'Cody')
+niky = User.find_or_create_by(name: 'Niky')
 
 # MONSTERS
-sullivan = adrienne.monsters.create!(name: 'Sullivan')
-mike = adrienne.monsters.create!(name: 'Mike')
-vim = brian.monsters.create!(name: 'Vim')
-randal = brian.monsters.create!(name: 'Randal')
-boo = cody.monsters.create!(name: 'Boo')
-st = niky.monsters.create!(name: 'Storm Trooper')
+sullivan = adrienne.monsters.find_or_create_by!(name: 'Sullivan')
+mike = adrienne.monsters.find_or_create_by!(name: 'Mike')
+vim = brian.monsters.find_or_create_by!(name: 'Vim')
+randal = brian.monsters.find_or_create_by!(name: 'Randal')
+boo = cody.monsters.find_or_create_by!(name: 'Boo')
+st = niky.monsters.find_or_create_by!(name: 'Storm Trooper')
 
-# BODY PARTS
-Monster.all.each do |m| 
-  h = BodyPart.create(section: "head")
-  t = BodyPart.create(section: "torso")
-  l = BodyPart.create(section: "leg")
+# CREATE BODY PARTS FROM IMAGES
+["head", "torso", "leg"].each do |section|
+  images = Dir.entries("#{Rails.root}/app/assets/images/#{section}s")
+  images.each do |f|
+    if f.end_with?('.svg')
+      file = f.split('.svg').first # Get file name without .svg at the end
+      file_parts = file.split('_')
+      color = file_parts.pop # Pop color from end of file name
+      filename = file_parts.size == 1 ? file_parts.first : file_parts.join('_') # Get file name w/ out color
+      BodyPart.find_or_create_by!(section: section, color: color, filename: file)
+    end
+  end
+end
+
+# GIVE MONSTERS RANDOM BODY PARTS
+Monster.all.each do |m|
+  h = BodyPart.where(section: "head").sample
+  t = BodyPart.where(section: "torso").sample
+  l = BodyPart.where(section: "leg").sample
   params = {head_id: h.id, torso_id: t.id, leg_id: l.id}
-
   m.update(params)
 end
-  
+
+
 
 
 

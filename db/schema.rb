@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_26_002438) do
+ActiveRecord::Schema.define(version: 2019_03_27_035453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2019_03_26_002438) do
     t.string "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "filename"
   end
 
   create_table "monsters", force: :cascade do |t|
@@ -32,6 +33,23 @@ ActiveRecord::Schema.define(version: 2019_03_26_002438) do
     t.integer "leg_id"
     t.datetime "time_last_fed"
     t.integer "happiness"
+    t.integer "head_x"
+    t.integer "head_y"
+    t.integer "torso_x"
+    t.integer "torso_y"
+    t.integer "leg_x"
+    t.integer "leg_y"
+    t.integer "face_id"
+    t.integer "face_x"
+    t.integer "face_y"
+    t.float "face_scale_x"
+    t.float "face_scale_y"
+    t.float "head_scale_x"
+    t.float "head_scale_y"
+    t.float "torso_scale_x"
+    t.float "torso_scale_y"
+    t.float "leg_scale_x"
+    t.float "leg_scale_y"
   end
 
   create_table "users", force: :cascade do |t|
