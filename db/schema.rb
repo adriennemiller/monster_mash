@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_26_232611) do
+ActiveRecord::Schema.define(version: 2019_03_27_035453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,14 @@ ActiveRecord::Schema.define(version: 2019_03_26_232611) do
     t.integer "face_id"
     t.integer "face_x"
     t.integer "face_y"
+    t.float "face_scale_x"
+    t.float "face_scale_y"
+    t.float "head_scale_x"
+    t.float "head_scale_y"
+    t.float "torso_scale_x"
+    t.float "torso_scale_y"
+    t.float "leg_scale_x"
+    t.float "leg_scale_y"
   end
 
   create_table "users", force: :cascade do |t|

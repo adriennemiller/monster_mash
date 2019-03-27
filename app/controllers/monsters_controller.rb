@@ -22,7 +22,7 @@ class MonstersController < ApplicationController
 
   def update
     @monster.update(monster_params)
-    render :edit
+    redirect_to @monster
   end
 
   def destroy

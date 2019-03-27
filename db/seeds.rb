@@ -29,7 +29,7 @@ st = niky.monsters.find_or_create_by!(name: 'Storm Trooper')
       file_parts = file.split('_')
       color = file_parts.pop # Pop color from end of file name
       filename = file_parts.size == 1 ? file_parts.first : file_parts.join('_') # Get file name w/ out color
-      BodyPart.find_or_create_by!(section: section, color: color, filename: filename)
+      BodyPart.find_or_create_by!(section: section, color: color, filename: file)
     end
   end
 end
