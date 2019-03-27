@@ -67,6 +67,9 @@ class MonstersController < ApplicationController
   def destroy
   end
 
+  def  home
+  end
+
   private
 
   def monster_params

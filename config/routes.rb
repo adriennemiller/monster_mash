@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'monsters#home'
   resources :body_parts
   resources :monsters
   resources :users

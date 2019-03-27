@@ -15,6 +15,10 @@
 //*= require jquery-ui/slider
 @import "bootstrap";
 
+body {
+  padding-top: 80px;
+}
+
 .monster-canvas {
   position: relative;
   width: 400px;

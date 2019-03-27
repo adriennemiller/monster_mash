@@ -1,19 +1,25 @@
-<div class="container">
-  <head>
-  <title>Edit User Form</title>
-  </head>
-  <body>
-    <label><h1>Edit User</h1></label>
-    <ul>
-      <%= form_for @user do |f| %>
-      <h3><%= f.label :name %></h3>
-      <%= f.text_field :name %><br>
-      <%= f.submit "Update User" %>
-      <% end %>
-    </ul>
-    <%= form_tag @user, method: "delete" do %>
-      <%= submit_tag "Delete" %>
-    <%= link_to 'Delete', @user, method: :delete %>
-    <% end %>
-  </body>
+<div class= "container">
+<div class="d-flex justify-content-center">
+  <h1> Edit User </h1>
+</div>
+
+<div class="d-flex justify-content-center">
+<%= form_for @user, :html => {:class => "form-horizontal center"} do |f| %>
+      <div class="form-group">
+        <%= f.label :name, "Username:", class: "col-md-4 control-label" %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password, "Password:", class: "col-md-4 control-label" %>
+        <%= f.password_field :password, class: "form-control" %>
+      </div>
+      <%= f.submit "Submit", class: "btn btn-default btn-outline-primary" %>
+ <% end %>
+ </div>
+     <div class="mx-auto">
+     <%= form_tag @user, method: "delete", class: "col-md-2 col-md-offset-5" do %>
+     <%= link_to 'Delete User', @user, method: :delete %>
+     <% end %>
+    </div>
+  </div>
 </div>
