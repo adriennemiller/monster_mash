@@ -1,15 +1,18 @@
-<div class="container">
-  <head>
-    <title>New User Form</title>
-  </head>
-  <body>
-    <label><h1>Create New User</h1></label>
-  <%= form_for :user, url: '/users' do |f| %>
-    Username: <%= f.text_field :name %>
-    Password: <%= f.password_field :password %>
-    Password Confirmation: <%= f.password_field :password_confirmation %>
-    <%= f.submit "Submit" %>
-  <% end %>
-
-  </body>
+<div class= "container">
+<div class="d-flex justify-content-center">
+<h1> Create New User </h1>
+</div>
+<div class="d-flex justify-content-center">
+<%= form_for @user, :html => {:class => "form-horizontal center"} do |f| %>
+      <div class="form-group">
+        <%= f.label :name, "Username:", class: "col-md-4 control-label" %>
+          <%= f.text_field :name, class: "form-control" %>
+            </div>
+          <div class="form-group">
+          <%= f.label :password, "Password:", class: "col-md-4 control-label" %>
+          <%= f.password_field :password, class: "form-control" %>
+      </div>
+      <%= f.submit "Submit", class: "btn btn-default btn-outline-primary" %>
+ <% end %>
+</div>
 </div>
