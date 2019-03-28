@@ -58,8 +58,13 @@
           "
           src="<%= asset_path("torsos/#{@monster.torso.filename}.svg") %>"
         />
+<<<<<<< HEAD
         <img 
           id="leg" 
+=======
+        <img
+          id="leg"
+>>>>>>> e84a8f8f101532d43ccbe803682eb03a0da4c8ff
           class="body-part leg"
           style="
             left: <%= @monster.leg_x %>px;
@@ -77,8 +82,18 @@
           "
           src="<%= asset_path("legs/#{@monster.leg.filename}.svg") %>"
         >
+<<<<<<< HEAD
       </div>  
     </div>
   </div>
+=======
+      </div>
+      <div>
+      <%= link_to "Edit Monster", edit_monster_path(@monster), class: "btn btn-outline-primary btn-rounded  my-4" %>
+      </div>
+      <div>
+      <%= button_to "Destroy Monster",{ action: "destroy", id: @monster.id }, method: :delete, class: "btn btn-outline-danger btn-rounded  my-4", data: {confirm: "Are you sure?"} %>
+      </div>
+>>>>>>> e84a8f8f101532d43ccbe803682eb03a0da4c8ff
 </div>
 

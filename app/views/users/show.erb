@@ -1,47 +1,78 @@
 <div class="container body-padding">
   <div>
-  <label><h1><%= @user.name %></h1></label>
+    <h1><%= @user.name %></h1>
   <%= link_to "Edit User", edit_user_path(@user) %>
   </div>
 
-
-
-  <% @user.monsters.each do |monster| %>
-  <li><%= link_to "#{monster.name}", monster_path(monster) %>
-  <% end %>
-
+<div class="container">
   <div class="row">
-    <div class="col-lg-4 col-sm-6 portfolio-item">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Project One</a>
-          </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
-        </div>
+    <div class="col">
+  <% @user.monsters.each do |monster| %>
+  <div class="card-body">
+  <%= link_to "#{monster.name}", monster, class: "btn btn-outline-primary btn-rounded btn-block my-4 waves-effect z-depth-0" %>
+  <div class= "monster-canvas">
+         <img
+           id="head"
+           class="body-part head"
+           style="
+             left: <%= monster.head_x %>px;
+             top: <%= monster.head_y %>px;
+             -webkit-transform : scaleX(<%= monster.head_scale_x %>);
+             -webkit-transform : scaleY(<%= monster.head_scale_y %>);
+             -moz-transform    : scaleX(<%= monster.head_scale_x %>);
+             -moz-transform    : scaleY(<%= monster.head_scale_y %>);
+             -ms-transform     : scaleX(<%= monster.head_scale_x %>);
+             -ms-transform     : scaleY(<%= monster.head_scale_y %>);
+             -o-transform      : scaleX(<%= monster.head_scale_x %>);
+             -o-transform      : scaleY(<%= monster.head_scale_y %>);
+             transform         : scaleX(<%= monster.head_scale_x %>);
+             transform         : scaleY(<%= monster.head_scale_y %>);
+           "
+           src="<%= asset_path("heads/#{monster.head.filename}.svg") %>"
+         />
+         <img
+           id="torso"
+           class="body-part torso"
+           style="
+             left: <%= monster.torso_x %>px;
+             top: <%= monster.torso_y %>px;
+             -webkit-transform : scaleX(<%= monster.torso_scale_x %>);
+             -webkit-transform : scaleY(<%= monster.torso_scale_y %>);
+             -moz-transform    : scaleX(<%= monster.torso_scale_x %>);
+             -moz-transform    : scaleY(<%= monster.torso_scale_y %>);
+             -ms-transform     : scaleX(<%= monster.torso_scale_x %>);
+             -ms-transform     : scaleY(<%= monster.torso_scale_y %>);
+             -o-transform      : scaleX(<%= monster.torso_scale_x %>);
+             -o-transform      : scaleY(<%= monster.torso_scale_y %>);
+             transform         : scaleX(<%= monster.torso_scale_x %>);
+             transform         : scaleY(<%= monster.torso_scale_y %>);
+           "
+           src="<%= asset_path("torsos/#{monster.torso.filename}.svg") %>"
+         />
+         <img
+           id="leg"
+           class="body-part leg"
+           style="
+             left: <%= monster.leg_x %>px;
+             top: <%= monster.leg_y %>px;
+             -webkit-transform : scaleX(<%= monster.leg_scale_x %>);
+             -webkit-transform : scaleY(<%= monster.leg_scale_y %>);
+             -moz-transform    : scaleX(<%= monster.leg_scale_x %>);
+             -moz-transform    : scaleY(<%= monster.leg_scale_y %>);
+             -ms-transform     : scaleX(<%= monster.leg_scale_x %>);
+             -ms-transform     : scaleY(<%= monster.leg_scale_y %>);
+             -o-transform      : scaleX(<%= monster.leg_scale_x %>);
+             -o-transform      : scaleY(<%= monster.leg_scale_y %>);
+             transform         : scaleX(<%= monster.leg_scale_x %>);
+             transform         : scaleY(<%= monster.leg_scale_y %>);
+           "
+           src="<%= asset_path("legs/#{monster.leg.filename}.svg") %>"
+
+       </div>
       </div>
-    </div>
-    <div class="col-lg-4 col-sm-6 portfolio-item">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Project Two</a>
-          </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 col-sm-6 portfolio-item">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Project Three</a>
-          </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
-        </div>
-      </div>
-    </div>
+<% end %>
+</div>
+</div>
+</div>
+</div>
 </div>
