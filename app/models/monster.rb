@@ -21,7 +21,7 @@ class Monster < ApplicationRecord
   end 
 
   def age
-    ((Time.zone.now - self.created_at) / (3600)).to_i
+    ((Time.zone.now - self.created_at) / (60*60*24)).to_i + 1
   end
 
   def height 
@@ -63,14 +63,17 @@ class Monster < ApplicationRecord
     weight - self.name.length/5.0
   end
 
-  def get_time_elapsed_since_last_fed
-    (Time.zone.now - self.time_last_fed)
+  def get_hours_since_last_fed
+    (Time.zone.now - self.time_last_fed) / (60 * 60)
   end
 
-  def get_happiness_by_hunger
-    case self.get_time_elapsed_since_last_fed
-    when 0
-      0
-    end
+  def update_happiness
+    self.happiness = (24/3 - get_hours_since_last_fed).clamp(0, 10)
+  end
+
+  private
+
+  def clamp(min, max)
+    [[self, max].min, min].max
   end
 end

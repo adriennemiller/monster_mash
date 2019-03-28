@@ -6,7 +6,7 @@
           <h1><%= @monster.name %></h1>
         </div>
         <div class="card-body">
-          <p>Age: <%= @monster.age %></p>
+          <p>Age: <%= pluralize(@monster.age, "day") %> old</p>
           <p>Weight: <%= @monster.weight %>kg</p>
           <p>Height: <%= @monster.height %>cm</p>
           <p>Mood: <%= @monster.mood %></p>

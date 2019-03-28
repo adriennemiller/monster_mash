@@ -13,6 +13,7 @@ class MonstersController < ApplicationController
     @is_user_owner = user && @monster.user.id == user.id
     @has_user_liked = user && Like.find_by(user_id: user.id, monster_id: @monster.id)
     @monster_likes = Like.where(monster_id: @monster.id)
+    @monster.update_happiness
   end
 
   def new
@@ -47,6 +48,7 @@ class MonstersController < ApplicationController
     )
   end
 
+
   def create
     user = User.find_by(id: session[:user_id])
     @monster = user.monsters.build(monster_params)
@@ -63,6 +65,9 @@ class MonstersController < ApplicationController
   end
 
   def update
+    # Update happiness if fed
+    @monster.update_happiness if (monster_params[:time_last_fed])
+
     if @monster.update(monster_params)
       redirect_to @monster
     else
