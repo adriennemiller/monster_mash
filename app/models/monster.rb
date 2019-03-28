@@ -1,11 +1,11 @@
 class Monster < ApplicationRecord
-  include ActionView::Helpers::TextHelper
-
   belongs_to :user
   belongs_to :head, class_name: 'BodyPart', foreign_key: :head_id, optional: true
   belongs_to :torso, class_name: 'BodyPart', foreign_key: :torso_id, optional: true
   belongs_to :leg, class_name: 'BodyPart', foreign_key: :leg_id, optional: true
   has_many :likes
+
+  validates :name, presence: true
 
   def mood
     case self.happiness

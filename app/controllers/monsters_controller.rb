@@ -12,8 +12,7 @@ class MonstersController < ApplicationController
     user = User.find_by(id: session[:user_id]) 
     @is_user_owner = user && @monster.user.id == user.id
     @has_user_liked = user && Like.find_by(user_id: user.id, monster_id: @monster.id)
-    @monster_likes = Like.where(monster_id: @monster.id)
-    @monster.update_happiness
+    @monster.update_happiness if @monster.time_last_fed
   end
 
   def new

@@ -1,22 +1,7 @@
-<div class= "body-padding">
 <div class="container">
 <h1>Monsters</h1>
-  <% @monsters.each do |monster| %>
-<div class="row">
-     <div class="col-md-7">
-       <a href="#">
-         <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
-       </a>
-     </div>
-     <div class="col-md-5">
-       <h3><%= link_to monster.name, monster %></h3>
-       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
-       <div><%= link_to "View Monster", monster, class: "btn btn-outline-info btn-rounded" %>
-       </div>
-     </div>
-   </div>
-   <br>
-   <br>
-     <% end %>
-     </div>
-    </div>
+<% @monsters.each do |monster| %>
+  <%= render partial: "card", locals: {monster: monster} %>
+<% end %>
+</div>
+
