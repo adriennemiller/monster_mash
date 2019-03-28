@@ -22,51 +22,60 @@ niky = User.find_or_create_by!(name: 'ni', password_digest: Password.create('cba
       file = f.split('.svg').first # Get file name without .svg at the end
       file_parts = file.split('_')
       color = file_parts.pop # Pop color from end of file name
-      filename = file_parts.size == 1 ? file_parts.first : file_parts.join('_') # Get file name w/ out color
       BodyPart.find_or_create_by!(section: section, color: color, filename: file)
     end
   end
 end
 
-# MONSTERS
-sullivan = adrienne.monsters.find_or_create_by!(create_monster_from_name('Sullivan'))
-mike = adrienne.monsters.find_or_create_by!(create_monster_from_name('Mike'))
-vim = brian.monsters.find_or_create_by!(create_monster_from_name('Vim'))
-randal = brian.monsters.find_or_create_by!(create_monster_from_name('Randal'))
-boo = cody.monsters.find_or_create_by!(create_monster_from_name('Boo'))
-st = niky.monsters.find_or_create_by!(create_monster_from_name('Storm Trooper'))
 
 # Create random monsters
-def create_monster_from_name(name)
-  Monster.create(
-      name: name,
-  
-      # face_id: BodyPart.where(section: 'face').first.id,
-      # face_x: 0,
-      # face_y: 0,
-      # face_scale_x: 1.0,
-      # face_scale_y: 1.0,
+new_monster =
+  {
+    face_id: BodyPart.where(section: 'face').first.id,
+    face_x: 0,
+    face_y: 0,
+    face_scale_x: 1.0,
+    face_scale_y: 1.0,
 
-      head_id: Head.where(section: 'head').sample.id,
-      head_x: 400/3,
-      head_y: 0,
-      head_scale_x: 1.0,
-      head_scale_y: 1.0,
+    head_id: BodyPart.where(section: 'head').sample.id,
+    head_x: 400/3,
+    head_y: 0,
+    head_scale_x: 1.0,
+    head_scale_y: 1.0,
 
-      torso_id: Torso.where(section: 'torso').sample.id,
-      torso_x: 400/3,
-      torso_y: 400/3 - 4,
-      torso_scale_x: 1.0,
-      torso_scale_y: 1.0,
+    torso_id: BodyPart.where(section: 'torso').sample.id,
+    torso_x: 400/3,
+    torso_y: 400/3 - 4,
+    torso_scale_x: 1.0,
+    torso_scale_y: 1.0,
 
-      leg_id: Leg.where(section: 'leg').sample.id,
-      leg_x: 400/3,
-      leg_y: 800/3 - 8,
-      leg_scale_x: 1.0,
-      leg_scale_y: 1.0,
+    leg_id: BodyPart.where(section: 'leg').sample.id,
+    leg_x: 400/3,
+    leg_y: 800/3 - 8,
+    leg_scale_x: 1.0,
+    leg_scale_y: 1.0,
 
-      happiness: 10,
-      time_last_fed: DateTime.now
-    )
-end
+    happiness: 10,
+    time_last_fed: DateTime.now
+  }
 
+m1 = new_monster
+m1[:name] = "Sullivan"
+m2 = new_monster
+m2[:name] = "Vim"
+m3 = new_monster
+m3[:name] = "Randal"
+m4 = new_monster
+m4[:name] = "Boo"
+m5 = new_monster
+m5[:name] = "Mike"
+m6 = new_monster
+m6[:name] = "Bowser"
+
+# MONSTERS
+sullivan = adrienne.monsters.find_or_create_by!(m1)
+mike = adrienne.monsters.find_or_create_by!(m2)
+vim = brian.monsters.find_or_create_by!(m3)
+randal = brian.monsters.find_or_create_by!(m4)
+boo = cody.monsters.find_or_create_by!(m5)
+st = niky.monsters.find_or_create_by!(m6)
