@@ -25,12 +25,25 @@ $(document).on('turbolinks:load', function(){
 
   if ($(".slider").length > 0) {   
     // ======= SLIDER =======
+    $("#face_scale_x").slider({
+      value: $(`#monster_face_scale_x`)[0].value,
+      min: 0.5,
+      max: 1.5,
+      step: 0.01,
+      slide: function( event, ui ) {}
+    });
+    $("#face_scale_y").slider({
+      value: $(`#monster_face_scale_y`)[0].value,
+      min: 0.5,
+      max: 1.5,
+      step: 0.01,
+      slide: function( event, ui ) {}
+    });
     $("#head_scale_x").slider({
       value: $(`#monster_head_scale_x`)[0].value,
       min: 0.5,
       max: 1.5,
       step: 0.01,
-      orientation: "vertical",
       slide: function( event, ui ) {}
     });
     $("#head_scale_y").slider({
@@ -38,7 +51,6 @@ $(document).on('turbolinks:load', function(){
       min: 0.5,
       max: 1.5,
       step: 0.01,
-      orientation: "vertical",
       slide: function( event, ui ) {}
     });
     $("#torso_scale_x").slider({
@@ -46,7 +58,6 @@ $(document).on('turbolinks:load', function(){
       min: 0.5,
       max: 1.5,
       step: 0.01,
-      orientation: "vertical",
       slide: function( event, ui ) {}
     });
     $("#torso_scale_y").slider({
@@ -54,7 +65,6 @@ $(document).on('turbolinks:load', function(){
       min: 0.5,
       max: 1.5,
       step: 0.01,
-      orientation: "vertical",
       slide: function( event, ui ) {}
     });
     $("#leg_scale_x").slider({
@@ -62,7 +72,6 @@ $(document).on('turbolinks:load', function(){
       min: 0.5,
       max: 1.5,
       step: 0.01,
-      orientation: "vertical",
       slide: function( event, ui ) {}
     });
     $("#leg_scale_y").slider({
@@ -70,7 +79,6 @@ $(document).on('turbolinks:load', function(){
       min: 0.5,
       max: 1.5,
       step: 0.01,
-      orientation: "vertical",
       slide: function( event, ui ) {}
     });
 
@@ -96,6 +104,10 @@ $(document).on('turbolinks:load', function(){
   }
 
   // ======= BODY PART SECTION =======
+  $("#monster_face_id").change(function() {
+    $("#face")[0].src = `/assets/faces/${$("#monster_face_id option:selected")[0].text}.svg`
+  })
+
   $("#monster_head_id").change(function() {
     $("#head")[0].src = `/assets/heads/${$("#monster_head_id option:selected")[0].text}.svg`
   })

@@ -31,15 +31,24 @@
   z-index: 1;
 }
 
-.form {
+.forms {
   display: flex;
+  flex-flow: column;
 }
 
 .form-block {
   padding: 1em;
 }
 
+.draggable {
+  cursor: pointer;
+}
+
 .slider {
   display: inline-block;
+  min-width: 50%;
+}
+
+label {
   margin-right: 0.5em;
 }
