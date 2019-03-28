@@ -56,7 +56,7 @@ new_monster =
     leg_scale_y: 1.0,
 
     happiness: 10,
-    time_last_fed: DateTime.now
+    time_last_fed: Time.zone.now
   }
 
 m1 = new_monster

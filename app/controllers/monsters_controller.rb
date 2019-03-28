@@ -9,16 +9,20 @@ class MonstersController < ApplicationController
   end
 
   def show
+    user = User.find_by(id: session[:user_id]) 
+    @is_user_owner = user && @monster.user.id == user.id
+    @has_user_liked = user && Like.find_by(user_id: user.id, monster_id: @monster.id)
+    @monster_likes = Like.where(monster_id: @monster.id)
   end
 
   def new
     # Default values
     @monster = Monster.new(
-      # face_id: BodyPart.where(section: 'face').first.id,
-      # face_x: 0,
-      # face_y: 0,
-      # face_scale_x: 1.0,
-      # face_scale_y: 1.0,
+      face_id: BodyPart.where(section: 'face').first.id,
+      face_x: 0,
+      face_y: 0,
+      face_scale_x: 1.0,
+      face_scale_y: 1.0,
 
       head_id: @heads.third.id,
       head_x: 400/3,
@@ -39,7 +43,7 @@ class MonstersController < ApplicationController
       leg_scale_y: 1.0,
 
       happiness: 10,
-      time_last_fed: DateTime.now
+      time_last_fed: Time.zone.now
     )
   end
 

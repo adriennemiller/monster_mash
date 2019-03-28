@@ -1,25 +1,50 @@
 <div class="container monsters-show">
   <div class="row">
-    <div class="col-lg">
+    <div class="col-md">
       <div class="card">
         <div class="card-header">
           <h1><%= @monster.name %></h1>
         </div>
         <div class="card-body">
-          <p>Mood: <%= @monster.get_mood %></p>
-          <p class="card-text"><small class="text-muted">Last fed <%= @monster.get_time_elapsed_since_last_fed %> ago</small></p>
+          <p>Age: <%= @monster.age %></p>
+          <p>Weight: <%= @monster.weight %>kg</p>
+          <p>Height: <%= @monster.height %>cm</p>
+          <p>Mood: <%= @monster.mood %></p>
         </div>
         <div class="card-body">
-          <%= form_for(@monster) do |f| %>
-            <%= f.hidden_field :time_last_fed, value: DateTime.now %>
-            <%= f.submit 'Feed', class: "btn btn-primary" %>
-          <% end %>
+          <span style="float: left">
+            <% if @is_user_owner %>
+              <%= form_for(@monster) do |f| %>
+                <%= f.hidden_field :time_last_fed, value: Time.zone.now %>
+                <%= f.submit 'Feed', class: "btn btn-primary" %>
+              <% end %>
+            <% end %>
+            <%= form_tag like_path do %>
+              <% if !@is_user_owner %>
+                <% if !@has_user_liked %>
+                  <%= hidden_field_tag name="do_like" %>
+                  <button type="submit" name="commit" class="btn btn-outline-danger">
+                    <%= octicon "heart", fill: 'red' %>&nbsp;&nbsp;Like
+                  </button>
+                <% else %>
+                  <button type="submit" name="commit" class="btn red">
+                    <span style="color: white">
+                      <%= octicon "heart", fill: 'white' %>&nbsp;&nbsp;Liked
+                    </span>
+                  </button>
+                <%end %>
+              <% end %>
+            <% end %>
+          </span>
+          <span style="line-height: 45px; float: right">
+            <%= octicon "heart", :height => 32, fill: 'red' %>&nbsp;<%= @monster_likes.size %>
+          </span>
         </div>
 
       </div>
     </div>
-    <div class="col-sm">
-      <div class="monster-canvas">
+    <div class="col-md">
+      <div class="monster-canvas center">
         <img 
           id="head" 
           class="body-part head"
@@ -58,13 +83,8 @@
           "
           src="<%= asset_path("torsos/#{@monster.torso.filename}.svg") %>"
         />
-<<<<<<< HEAD
         <img 
           id="leg" 
-=======
-        <img
-          id="leg"
->>>>>>> e84a8f8f101532d43ccbe803682eb03a0da4c8ff
           class="body-part leg"
           style="
             left: <%= @monster.leg_x %>px;
@@ -82,18 +102,8 @@
           "
           src="<%= asset_path("legs/#{@monster.leg.filename}.svg") %>"
         >
-<<<<<<< HEAD
       </div>  
     </div>
   </div>
-=======
-      </div>
-      <div>
-      <%= link_to "Edit Monster", edit_monster_path(@monster), class: "btn btn-outline-primary btn-rounded  my-4" %>
-      </div>
-      <div>
-      <%= button_to "Destroy Monster",{ action: "destroy", id: @monster.id }, method: :delete, class: "btn btn-outline-danger btn-rounded  my-4", data: {confirm: "Are you sure?"} %>
-      </div>
->>>>>>> e84a8f8f101532d43ccbe803682eb03a0da4c8ff
 </div>
 
