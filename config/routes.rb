@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :entries
+  resources :beauty_contests
   root 'monsters#home'
   resources :body_parts
   resources :monsters

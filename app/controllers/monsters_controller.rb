@@ -75,6 +75,8 @@ class MonstersController < ApplicationController
   end
 
   def destroy
+    @monster.destroy
+    redirect_to root_path
   end
 
   def  home

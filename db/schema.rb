@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< Updated upstream
 ActiveRecord::Schema.define(version: 2019_03_28_001343) do
+=======
+ActiveRecord::Schema.define(version: 2019_03_28_192851) do
+>>>>>>> Stashed changes
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "beauty_contests", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "has_ended"
+  end
 
   create_table "body_parts", force: :cascade do |t|
     t.string "section"
@@ -23,9 +33,17 @@ ActiveRecord::Schema.define(version: 2019_03_28_001343) do
     t.string "filename"
   end
 
+<<<<<<< Updated upstream
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
     t.integer "monster_id"
+=======
+  create_table "entries", force: :cascade do |t|
+    t.integer "beauty_contest_id"
+    t.integer "monster_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+>>>>>>> Stashed changes
   end
 
   create_table "monsters", force: :cascade do |t|
@@ -55,6 +73,7 @@ ActiveRecord::Schema.define(version: 2019_03_28_001343) do
     t.float "torso_scale_y"
     t.float "leg_scale_x"
     t.float "leg_scale_y"
+    t.boolean "has_won_contest"
   end
 
   create_table "users", force: :cascade do |t|

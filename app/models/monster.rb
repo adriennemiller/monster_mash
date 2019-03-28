@@ -3,6 +3,7 @@ class Monster < ApplicationRecord
   belongs_to :head, class_name: 'BodyPart', foreign_key: :head_id, optional: true
   belongs_to :torso, class_name: 'BodyPart', foreign_key: :torso_id, optional: true
   belongs_to :leg, class_name: 'BodyPart', foreign_key: :leg_id, optional: true
+<<<<<<< Updated upstream
   has_many :likes
 
   validates :name, presence: true
@@ -95,4 +96,7 @@ class Monster < ApplicationRecord
   def clamp(min, max)
     [[self, max].min, min].max
   end
+=======
+  has_one :entry
+>>>>>>> Stashed changes
 end
