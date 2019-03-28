@@ -18,27 +18,27 @@ class MonstersController < ApplicationController
   def new
     # Default values
     @monster = Monster.new(
-      face_id: BodyPart.where(section: 'face').first.id,
-      face_x: 0,
-      face_y: 0,
+      face_id: @faces.select{|face| face.filename.include?("happy")}.sample.id,
+      face_x: 400/3,
+      face_y: 9,
       face_scale_x: 1.0,
       face_scale_y: 1.0,
 
-      head_id: @heads.third.id,
+      head_id: @heads.sample.id,
       head_x: 400/3,
       head_y: 0,
       head_scale_x: 1.0,
       head_scale_y: 1.0,
 
-      torso_id: @torsos.first.id,
+      torso_id: @torsos.sample.id,
       torso_x: 400/3,
-      torso_y: 400/3 - 4,
+      torso_y: 360/3,
       torso_scale_x: 1.0,
       torso_scale_y: 1.0,
 
-      leg_id: @legs.first.id,
+      leg_id: @legs.sample.id,
       leg_x: 400/3,
-      leg_y: 800/3 - 8,
+      leg_y: 759/3,
       leg_scale_x: 1.0,
       leg_scale_y: 1.0,
 
@@ -91,6 +91,7 @@ class MonstersController < ApplicationController
   end
 
   def set_body_parts
+    @faces = BodyPart.where(section: "face")
     @heads = BodyPart.where(section: "head")
     @torsos = BodyPart.where(section: "torso")
     @legs = BodyPart.where(section: "leg")

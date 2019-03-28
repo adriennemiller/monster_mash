@@ -97,8 +97,6 @@ $(document).on('turbolinks:load', function(){
         '-ms-transform'     : `scale${orientation}(${val})`,
         '-o-transform'      : `scale${orientation}(${val})`,
         'transform'         : `scale${orientation}(${val})`
-
-      
       });
     }
   }
