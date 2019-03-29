@@ -7,6 +7,13 @@ Bundler.require(*Rails.groups)
 
 module MonsterMash
   class Application < Rails::Application
+        
+    # Images for Body Parts
+    config.assets.paths << Rails.root.join("images", "faces")
+    config.assets.paths << Rails.root.join("images", "heads")
+    config.assets.paths << Rails.root.join("images", "torsos")
+    config.assets.paths << Rails.root.join("images", "legs")
+    
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
     config.assets.initialize_on_precompile = false
@@ -15,11 +22,5 @@ module MonsterMash
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
-    
-    # Images for Body Parts
-    config.assets.paths << Rails.root.join("images", "faces")
-    config.assets.paths << Rails.root.join("images", "heads")
-    config.assets.paths << Rails.root.join("images", "torsos")
-    config.assets.paths << Rails.root.join("images", "legs")
   end
 end
