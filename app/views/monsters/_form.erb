@@ -1,0 +1,62 @@
+<%= form_for(@monster) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <div class="forms">
+    <div class="form-block">
+      <%= f.label :face_id, "Face" %>
+      <%= f.collection_select :face_id, BodyPart.where(section: "face").select{|bp| bp.filename.include?("happy")}, :id, :filename %><br>
+      <%= f.hidden_field :face_x %>
+      <%= f.hidden_field :face_y %>
+      <%= f.hidden_field :face_scale_x %>
+      <%= f.hidden_field :face_scale_y %>
+      <%= f.label :face_scale_x, "Scale X" %>
+      <div id="face_scale_x" class="slider" ></div>
+      <br>
+      <%= f.label :face_scale_y, "Scale Y" %>
+      <div id="face_scale_y" class="slider" ></div>
+    </div>
+    <div class="form-block">
+      <%= f.label :head_id, "Head" %>
+      <%= f.collection_select :head_id, BodyPart.where(section: "head"), :id, :filename %><br>
+      <%= f.hidden_field :head_x %>
+      <%= f.hidden_field :head_y %>
+      <%= f.hidden_field :head_scale_x %>
+      <%= f.hidden_field :head_scale_y %>
+      <%= f.label :head_scale_x, "Scale X" %>
+      <div id="head_scale_x" class="slider" ></div>
+      <br>
+      <%= f.label :head_scale_y, "Scale Y" %>
+      <div id="head_scale_y" class="slider" ></div>
+    </div>
+
+    <div class="form-block">
+      <%= f.label :torso_id, "Torso" %>
+      <%= f.collection_select :torso_id, BodyPart.where(section: "torso"), :id, :filename %><br>
+      <%= f.hidden_field :torso_x %>
+      <%= f.hidden_field :torso_y %>
+      <%= f.hidden_field :torso_scale_x %>
+      <%= f.hidden_field :torso_scale_y %>
+      <%= f.label :torso_scale_x, "Scale X" %>
+      <div id="torso_scale_x" class="slider" ></div>
+      <br>
+      <%= f.label :torso_scale_y, "Scale Y" %>
+      <div id="torso_scale_y" class="slider" ></div>
+    </div>
+
+    <div class="form-block">
+      <%= f.label :leg_id, "Leg" %>
+      <%= f.collection_select :leg_id, BodyPart.where(section: "leg"), :id, :filename %><br>
+      <%= f.hidden_field :leg_x %>
+      <%= f.hidden_field :leg_y %>
+      <%= f.hidden_field :leg_scale_x %>
+      <%= f.hidden_field :leg_scale_y %>
+      <%= f.label :leg_scale_x, "Scale X" %>
+      <div id="leg_scale_x" class="slider" ></div>
+      <br>
+      <%= f.label :leg_scale_y, "Scale Y" %>
+      <div id="leg_scale_y" class="slider" ></div>
+    </div>
+  </div>
+  <%= f.submit 'Save Changes'%>
+<% end %>

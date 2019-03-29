@@ -1,8 +1,7 @@
 <div class="container">
 <h1>Monsters</h1>
-<ul>
-  <% @monsters.each do |monster| %>
-    <li><%= link_to monster.name, monster %></li>
-  <% end %>
-</ul>
+<% @monsters.each do |monster| %>
+  <%= render partial: "card", locals: {monster: monster} %>
+<% end %>
 </div>
+

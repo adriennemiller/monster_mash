@@ -1,5 +1,4 @@
 require_relative 'boot'
-
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
@@ -17,6 +16,7 @@ module MonsterMash
     # the framework and any gems in your application.
     
     # Images for Body Parts
+    config.assets.paths << Rails.root.join("images", "faces")
     config.assets.paths << Rails.root.join("images", "heads")
     config.assets.paths << Rails.root.join("images", "torsos")
     config.assets.paths << Rails.root.join("images", "legs")

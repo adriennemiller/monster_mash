@@ -1,63 +1,53 @@
-<div class="container">
-<h1><%= @monster.name %><h2>
- <div class="monster-canvas">
-        <img 
-          id="head" 
-          class="body-part head draggable"
-          style="
-            left: <%= @monster.head_x %>px;
-            top: <%= @monster.head_y %>px;
-            -webkit-transform : scaleX(<%= @monster.head_scale_x %>);
-            -webkit-transform : scaleY(<%= @monster.head_scale_y %>);
-            -moz-transform    : scaleX(<%= @monster.head_scale_x %>);
-            -moz-transform    : scaleY(<%= @monster.head_scale_y %>);
-            -ms-transform     : scaleX(<%= @monster.head_scale_x %>);
-            -ms-transform     : scaleY(<%= @monster.head_scale_y %>);
-            -o-transform      : scaleX(<%= @monster.head_scale_x %>);
-            -o-transform      : scaleY(<%= @monster.head_scale_y %>);
-            transform         : scaleX(<%= @monster.head_scale_x %>);
-            transform         : scaleY(<%= @monster.head_scale_y %>);
-          "
-          src="<%= asset_path("heads/#{@monster.head.filename}.svg") %>"
-        />
-        <img 
-          id="torso"
-          class="body-part torso draggable"
-          style="
-            left: <%= @monster.torso_x %>px;
-            top: <%= @monster.torso_y %>px;
-            -webkit-transform : scaleX(<%= @monster.torso_scale_x %>);
-            -webkit-transform : scaleY(<%= @monster.torso_scale_y %>);
-            -moz-transform    : scaleX(<%= @monster.torso_scale_x %>);
-            -moz-transform    : scaleY(<%= @monster.torso_scale_y %>);
-            -ms-transform     : scaleX(<%= @monster.torso_scale_x %>);
-            -ms-transform     : scaleY(<%= @monster.torso_scale_y %>);
-            -o-transform      : scaleX(<%= @monster.torso_scale_x %>);
-            -o-transform      : scaleY(<%= @monster.torso_scale_y %>);
-            transform         : scaleX(<%= @monster.torso_scale_x %>);
-            transform         : scaleY(<%= @monster.torso_scale_y %>);
-          "
-          src="<%= asset_path("torsos/#{@monster.torso.filename}.svg") %>"
-        />
-        <img 
-          id="leg" 
-          class="body-part leg draggable"
-          style="
-            left: <%= @monster.leg_x %>px;
-            top: <%= @monster.leg_y %>px;
-            -webkit-transform : scaleX(<%= @monster.leg_scale_x %>);
-            -webkit-transform : scaleY(<%= @monster.leg_scale_y %>);
-            -moz-transform    : scaleX(<%= @monster.leg_scale_x %>);
-            -moz-transform    : scaleY(<%= @monster.leg_scale_y %>);
-            -ms-transform     : scaleX(<%= @monster.leg_scale_x %>);
-            -ms-transform     : scaleY(<%= @monster.leg_scale_y %>);
-            -o-transform      : scaleX(<%= @monster.leg_scale_x %>);
-            -o-transform      : scaleY(<%= @monster.leg_scale_y %>);
-            transform         : scaleX(<%= @monster.leg_scale_x %>);
-            transform         : scaleY(<%= @monster.leg_scale_y %>);
-          "
-          src="<%= asset_path("legs/#{@monster.leg.filename}.svg") %>"
-        >
+<div class="container monsters-show">
+  <div class="row">
+    <div class="col-md">
+      <div class="card">
+        <div class="card-header">
+          <h1><%= @monster.name %></h1>
+        </div>
+        <div class="card-body">
+          <p>Age: <%= pluralize(@monster.age, "day") %> old</p>
+          <p>Weight: <%= @monster.weight %>kg</p>
+          <p>Height: <%= @monster.height %>cm</p>
+          <p>Mood: <%= @monster.mood %></p>
+        </div>
+        <div class="card-body">
+          <span style="float: left">
+            <% if @is_user_owner %>
+              <%= form_for(@monster) do |f| %>
+                <%= f.hidden_field :time_last_fed, value: Time.zone.now %>
+                <%= f.submit 'Feed', class: "btn btn-primary" %>
+              <% end %>
+            <% end %>
+            <%= form_tag like_path do %>
+              <% if !@is_user_owner %>
+                <% if !@has_user_liked %>
+                  <%= hidden_field_tag name="do_like" %>
+                  <button type="submit" name="commit" class="btn btn-md btn-outline-danger">
+                    <span class="icon-button">
+                      <%= octicon "heart", fill: 'red' %>&nbsp;&nbsp;Like&nbsp;
+                    </span>
+                  </button>
+                <% else %>
+                  <button type="submit" name="commit" class="btn btn-md btn-danger">
+                    <span class="icon-button" style="color: white">
+                      <%= octicon "heart", fill: 'white' %>&nbsp;&nbsp;Liked
+                    </span>
+                  </button>
+                <%end %>
+              <% end %>
+            <% end %>
+          </span>
+          <span style="line-height: 45px; float: right">
+            <%= octicon "heart", :height => 32, fill: 'red' %>&nbsp;<%= Like.where(monster_id: @monster.id).size %>
+          </span>
+        </div>
+
       </div>
+    </div>
+    <div class="col-md">
+        <%= render partial: "portrait", locals: {monster: @monster, draggable: false} %>
+    </div>
+  </div>
 </div>
 

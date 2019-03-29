@@ -1,3 +1,66 @@
 // Place all the styles related to the monsters controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.center {
+  margin: 0 auto;
+}
+
+.monster-canvas {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  border: 2px solid red;
+}
+
+.body-part {
+  position: absolute;
+  width: 33%;
+  height: 33%;
+}
+
+.face {
+  z-index: 4
+}
+
+.head {
+  z-index: 3;
+}
+
+.torso {
+  z-index: 2;
+}
+
+.leg {
+  z-index: 1;
+}
+
+.forms {
+  display: flex;
+  flex-flow: column;
+}
+
+.form-block {
+  padding: 1em;
+}
+
+.draggable {
+  cursor: pointer;
+}
+
+.slider {
+  display: inline-block;
+  min-width: 50%;
+}
+
+.icon-button {
+  font-size: 1.3em;
+}
+
+label {
+  margin-right: 0.5em;
+}
+
+.body-container {
+  display: inline-block;
+}

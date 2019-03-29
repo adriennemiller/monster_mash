@@ -1,109 +1,13 @@
+<!-- CANNOT USE PARTIAL HERE BECAUSE IT MESSES UP THE JS SCRIPTS -->
 <div class="container">
   <h1>Edit <%= @monster.name %></h1>
   <div class="row">
-    <div class="col-lg">
-      <%= form_for(@monster) do |f| %>
-        <%= f.label :name %>
-        <%= f.text_field :name %>
-        <br>
-        <div class="form">
-          <div class="form-block">
-            <%= f.label :head_id, "Head" %>
-            <%= f.collection_select :head_id, BodyPart.where(section: "head"), :id, :filename %><br>
-            <%= f.hidden_field :head_x %>
-            <%= f.hidden_field :head_y %>
-            <%= f.hidden_field :head_scale_x %>
-            <%= f.hidden_field :head_scale_y %>
-            <div id="head_scale_x" class="slider" ></div>
-            <div id="head_scale_y" class="slider" ></div>
-          </div>
-
-          <div class="form-block">
-            <%= f.label :torso_id, "Torso" %>
-            <%= f.collection_select :torso_id, BodyPart.where(section: "torso"), :id, :filename %><br>
-            <%= f.hidden_field :torso_x %>
-            <%= f.hidden_field :torso_y %>
-            <%= f.hidden_field :torso_scale_x %>
-            <%= f.hidden_field :torso_scale_y %>
-            <div id="torso_scale_x" class="slider" ></div>
-            <div id="torso_scale_y" class="slider" ></div>
-          </div>
-
-          <div class="form-block">
-            <%= f.label :leg_id, "Leg" %>
-            <%= f.collection_select :leg_id, BodyPart.where(section: "leg"), :id, :filename %><br>
-            <%= f.hidden_field :leg_x %>
-            <%= f.hidden_field :leg_y %>
-            <%= f.hidden_field :leg_scale_x %>
-            <%= f.hidden_field :leg_scale_y %>
-            <div id="leg_scale_x" class="slider" ></div>
-            <div id="leg_scale_y" class="slider" ></div>
-          </div>
-        </div>
-        <%= f.submit 'Save Changes'%>
-      <% end %>
+    <div class="col-md">
+      <%= render partial: "form", locals: {monster: @monster} %>
     </div>
 
-    <div class="col-sm">
-    <div class="monster-canvas">
-        <img 
-          id="head" 
-          class="body-part head draggable"
-          style="
-            left: <%= @monster.head_x %>px;
-            top: <%= @monster.head_y %>px;
-            -webkit-transform : scaleX(<%= @monster.head_scale_x %>);
-            -webkit-transform : scaleY(<%= @monster.head_scale_y %>);
-            -moz-transform    : scaleX(<%= @monster.head_scale_x %>);
-            -moz-transform    : scaleY(<%= @monster.head_scale_y %>);
-            -ms-transform     : scaleX(<%= @monster.head_scale_x %>);
-            -ms-transform     : scaleY(<%= @monster.head_scale_y %>);
-            -o-transform      : scaleX(<%= @monster.head_scale_x %>);
-            -o-transform      : scaleY(<%= @monster.head_scale_y %>);
-            transform         : scaleX(<%= @monster.head_scale_x %>);
-            transform         : scaleY(<%= @monster.head_scale_y %>);
-          "
-          src="<%= asset_path("heads/#{@monster.head.filename}.svg") %>"
-        />
-        <img 
-          id="torso"
-          class="body-part torso draggable"
-          style="
-            left: <%= @monster.torso_x %>px;
-            top: <%= @monster.torso_y %>px;
-            -webkit-transform : scaleX(<%= @monster.torso_scale_x %>);
-            -webkit-transform : scaleY(<%= @monster.torso_scale_y %>);
-            -moz-transform    : scaleX(<%= @monster.torso_scale_x %>);
-            -moz-transform    : scaleY(<%= @monster.torso_scale_y %>);
-            -ms-transform     : scaleX(<%= @monster.torso_scale_x %>);
-            -ms-transform     : scaleY(<%= @monster.torso_scale_y %>);
-            -o-transform      : scaleX(<%= @monster.torso_scale_x %>);
-            -o-transform      : scaleY(<%= @monster.torso_scale_y %>);
-            transform         : scaleX(<%= @monster.torso_scale_x %>);
-            transform         : scaleY(<%= @monster.torso_scale_y %>);
-          "
-          src="<%= asset_path("torsos/#{@monster.torso.filename}.svg") %>"
-        />
-        <img 
-          id="leg" 
-          class="body-part leg draggable"
-          style="
-            left: <%= @monster.leg_x %>px;
-            top: <%= @monster.leg_y %>px;
-            -webkit-transform : scaleX(<%= @monster.leg_scale_x %>);
-            -webkit-transform : scaleY(<%= @monster.leg_scale_y %>);
-            -moz-transform    : scaleX(<%= @monster.leg_scale_x %>);
-            -moz-transform    : scaleY(<%= @monster.leg_scale_y %>);
-            -ms-transform     : scaleX(<%= @monster.leg_scale_x %>);
-            -ms-transform     : scaleY(<%= @monster.leg_scale_y %>);
-            -o-transform      : scaleX(<%= @monster.leg_scale_x %>);
-            -o-transform      : scaleY(<%= @monster.leg_scale_y %>);
-            transform         : scaleX(<%= @monster.leg_scale_x %>);
-            transform         : scaleY(<%= @monster.leg_scale_y %>);
-          "
-          src="<%= asset_path("legs/#{@monster.leg.filename}.svg") %>"
-        >
-      </div>
+    <div class="col-md">
+      <%= render partial: "portrait", locals: {monster: @monster, draggable: true} %>
     </div>
+  </div>
 </div>
-

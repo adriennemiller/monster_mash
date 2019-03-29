@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_27_035453) do
+ActiveRecord::Schema.define(version: 2019_03_28_214239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "beauty_contests", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "has_ended"
+  end
 
   create_table "body_parts", force: :cascade do |t|
     t.string "section"
@@ -21,6 +27,18 @@ ActiveRecord::Schema.define(version: 2019_03_27_035453) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "filename"
+  end
+
+  create_table "entries", force: :cascade do |t|
+    t.integer "beauty_contest_id"
+    t.integer "monster_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "monster_id"
   end
 
   create_table "monsters", force: :cascade do |t|
@@ -50,10 +68,20 @@ ActiveRecord::Schema.define(version: 2019_03_27_035453) do
     t.float "torso_scale_y"
     t.float "leg_scale_x"
     t.float "leg_scale_y"
+    t.boolean "has_won_contest"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "password_digest"
+    t.boolean "is_admin?"
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer "entry_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
