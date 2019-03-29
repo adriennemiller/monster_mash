@@ -8,9 +8,17 @@
 
 .monster-canvas {
   position: relative;
+  border: 2px solid black;
+}
+
+.monster-canvas.large {
   width: 400px;
   height: 400px;
-  border: 2px solid red;
+}
+
+.monster-canvas.small {
+  width: 200px;
+  height: 200px;
 }
 
 .body-part {
@@ -46,6 +54,10 @@
 
 .draggable {
   cursor: pointer;
+}
+
+.draggable:hover {
+  border: 1px solid rgba(255, 0, 0, 0.35)
 }
 
 .slider {

@@ -1,4 +1,3 @@
-<!-- CANNOT USE PARTIAL HERE BECAUSE IT MESSES UP THE JS SCRIPTS -->
 <div class="container">
   <h1>Edit <%= @monster.name %></h1>
   <div class="row">
@@ -7,7 +6,7 @@
     </div>
 
     <div class="col-md">
-      <%= render partial: "portrait", locals: {monster: @monster, draggable: true} %>
+      <%= render partial: "portrait", locals: {monster: @monster, size: 'large', draggable: true} %>
     </div>
   </div>
 </div>

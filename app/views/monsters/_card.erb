@@ -1,12 +1,12 @@
+<div class="card" style="width: 200px">
 <%= link_to monster, :action => 'go' do %>
-  <div class="card" style="width: 400px">
-    <%= render partial: "portrait", locals: {monster: monster, draggable: false} %>
-    <div class="card-body">
-      <h5 class="card-title"><%= monster.name %></h5>
-      <p class="card-text">Owner: <%= monster.user.name %></p>
-      <span style="line-height: 45px; float: right">
-        <%= octicon "heart", :height => 32, fill: 'red' %>&nbsp;<%= Like.where(monster_id: monster.id).size %>
-      </span>
-    </div>
+  <%= render partial: "portrait", locals: {monster: monster, size: 'small', draggable: false} %>
+  <% end %>
+  <div class="card-body">
+    <h5 class="card-title"><%= monster.name %></h5>
+    <p class="card-text">Owner: <%= monster.user.name %></p>
+    <span style="line-height: 45px; float: right">
+      <%= octicon "heart", :height => 32, fill: 'red' %>&nbsp;<%= Like.where(monster_id: monster.id).size %>
+    </span>
   </div>
-<% end %>
+</div>
