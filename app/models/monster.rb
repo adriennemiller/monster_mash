@@ -5,7 +5,8 @@ class Monster < ApplicationRecord
   belongs_to :torso, class_name: 'BodyPart', foreign_key: :torso_id, optional: true
   belongs_to :leg, class_name: 'BodyPart', foreign_key: :leg_id, optional: true
   has_many :likes
-
+  has_one :entry
+  
   validates :name, presence: true
 
   def mood
@@ -14,18 +15,18 @@ class Monster < ApplicationRecord
       "angry"
     when 3..5
       "sad"
-    when 6..10 
+    when 6..10
       "happy"
     else
       "happy"
     end
-  end 
+  end
 
   def age
     ((Time.zone.now - self.created_at) / (60*60*24)).to_i + 1
   end
 
-  def height 
+  def height
     top = 0
     ys = {}
 
@@ -54,13 +55,13 @@ class Monster < ApplicationRecord
     when "leg"
       max_y += 200 * leg_scale_y
     end
-    
+
     max_y - min_y
   end
 
   def weight
     weight = 0
-    
+
     if self.head_id
       weight += 10 * self.head_scale_x
     end
@@ -75,14 +76,14 @@ class Monster < ApplicationRecord
 
     weight - self.name.length/5.0
   end
-  
+
   def get_hours_since_last_fed
     (Time.zone.now - self.time_last_fed) / (60 * 60)
   end
 
   def update_happiness
     case get_hours_since_last_fed
-    when 0..24 
+    when 0..24
       self.happiness = (16 - get_hours_since_last_fed/3).clamp(0, 10)
     when 25..36
       self.happiness = (15 - get_hours_since_last_fed/3 ).clamp(0, 10)
