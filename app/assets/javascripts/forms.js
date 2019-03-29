@@ -75,7 +75,7 @@ $(document).on('turbolinks:load', function(){
 
   // ======= BODY PART SECTION =======
   $("#monster_face_id").change(function() {
-    $("#face")[0].src = `/assets/faces/${$("#monster_face_id option:selected")[0].text}.svg`
+    $("#face")[0].src = `/assets/faces/${$("#monster_face_id option:selected" )[0].text}.svg`
   })
 
   $("#monster_head_id").change(function() {
