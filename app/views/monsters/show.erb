@@ -14,8 +14,8 @@
         <div class="card-body">
           <span style="float: left">
             <% if @is_user_owner %>
-              <%= form_tag(@monster) do %>
-                <%= hidden_field_tag  name="time_last_fed", value: Time.zone.now %>
+              <%= form_for @monster do |f| %>
+                <%= f.hidden_field :time_last_fed, value: Time.zone.now %>
                 <button type="submit" name="commit" class="btn btn-md btn-primary">
                   <span class="icon-button">
                     <%= octicon "squirrel", fill: 'white' %>&nbsp;&nbsp;Feed
@@ -27,13 +27,13 @@
               <% if !@is_user_owner %>
                 <% if !@has_user_liked %>
                   <%= hidden_field_tag name="do_like" %>
-                  <button type="submit" name="commit" class="btn btn-md btn-outline-danger pulse">
+                  <button type="submit" name="commit" class="btn btn-md btn-outline-danger">
                     <span class="icon-button">
                       <%= octicon "heart", fill: 'red' %>&nbsp;&nbsp;Like&nbsp;
                     </span>
                   </button>
                 <% else %>
-                  <button type="submit" name="commit" class="btn btn-md btn-danger pulse">
+                  <button type="submit" name="commit" class="btn btn-md btn-danger">
                     <span class="icon-button" style="color: white">
                       <%= octicon "heart", fill: 'white' %>&nbsp;&nbsp;Liked
                     </span>
@@ -53,5 +53,10 @@
         <%= render partial: "portrait", locals: {monster: @monster, size: 'large', show_border: false, draggable: false} %>
     </div>
   </div>
+  <% if flash[:overfed] %>
+    <div class="alert alert-warning" role="alert">
+      You fed <%= @monster.name %> today.
+    </div>
+  <% end %>
 </div>
 

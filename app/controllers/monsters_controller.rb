@@ -3,7 +3,6 @@ class MonstersController < ApplicationController
   before_action :set_monster, only: [:show, :update, :destroy]
   before_action :set_body_parts, only: [:new]
 
-
   def index
     @monsters = Monster.all
   end
@@ -41,9 +40,6 @@ class MonstersController < ApplicationController
       leg_y: 759/3,
       leg_scale_x: 1.0,
       leg_scale_y: 1.0,
-
-      happiness: 10,
-      time_last_fed: Time.zone.now
     )
   end
 
@@ -51,8 +47,9 @@ class MonstersController < ApplicationController
   def create
     user = User.find_by(id: session[:user_id])
     @monster = user.monsters.build(monster_params)
-
+    
     if @monster.save
+      @monster.update(happiness: 10, time_last_fed: Time.zone.now)
       redirect_to @monster
     else
       render :new
@@ -60,14 +57,27 @@ class MonstersController < ApplicationController
   end
 
   def update
-    # Update happiness if fed
-    @monster.update_happiness if (monster_params[:time_last_fed])
+    if (monster_params[:time_last_fed])
+      flash[:overfed] = (@monster.time_last_fed - Time.parse(monster_params[:time_last_fed])) / 3600 < 24
 
-    # if @monster.update(monster_params)
-    #   redirect_to @monster
+      # Gain weight
+      if flash[:overfed]
+        @monster.update(
+          head_scale_x: @monster.head_scale_x * 1.001,
+          torso_scale_x: @monster.torso_scale_x * 1.001,
+          leg_scale_x: @monster.leg_scale_x * 1.001
+        )
+      end
+
+      # Update happiness if fed
+      @monster.update_happiness 
+    end
+
+     if @monster.update(monster_params)
+       redirect_to @monster
     # else
     #   render :edit
-    # end
+     end
   end
 
   def destroy

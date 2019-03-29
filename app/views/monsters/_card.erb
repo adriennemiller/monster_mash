@@ -7,9 +7,11 @@
   <div class="card-body">
     <%= link_to monster, :action => 'go' do %><h5 class="card-title"><%= monster.name %></h5><% end %>
     <%= link_to monster.user, :action => 'go' do %><h6 class="card-subtitle mb-2 text-muted"><%= monster.user.name %></h6><%end%>
-    <span style="float: left">
-      <%= octicon "star", height: '24', fill: 'orange' %>
-    </span>
+    <% if monster.has_won_contest %>
+      <span style="float: left" title="Contest Winner">
+        <%= octicon "star", height: '24', fill: 'orange' %>
+      </span>
+    <% end %>
     <span style="float: right">
       <%= octicon "heart", height: '24', fill: 'red' %>&nbsp;<%= Like.where(monster_id: monster.id).size %>
     </span>

@@ -74,7 +74,7 @@ class Monster < ApplicationRecord
       weight += 15 * self.leg_scale_x
     end
 
-    weight - self.name.length/5.0
+    (weight - self.name.length/5.0).round(2)
   end
 
   def get_hours_since_last_fed
