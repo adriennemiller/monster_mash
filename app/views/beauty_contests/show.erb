@@ -55,11 +55,11 @@
     </div>
   </div>
 
-  <div class="row">
-    <!-- for admins -->
-    <%= form_for @contest do |f| %>
-      <%= f.hidden_field :end_contest%>
-      <%= f.submit "End Contest" %>
+    <% if @user.is_admin? %>
+      <!-- for admins -->
+      <%= form_for @contest do |f| %>
+        <%= f.hidden_field :end_contest%>
+        <%= f.submit "End Contest" %>
+      <% end %>
     <% end %>
   </div>
-</div>
