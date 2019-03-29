@@ -1,10 +1,10 @@
-  <div class="monster-canvas center <%= size %>">
+  <div class="monster-canvas center <%= size %> <%= "bordered" if show_border %>">
   <img
     id="face"
     class="body-part face <%= "draggable" if draggable %>"
     style="
-      left: <%= monster.face_x %>px;
-      top: <%= monster.face_y %>px;
+      left: <%= size == "small" ? monster.face_x/2 : monster.face_x %>px;
+      top: <%= size == "small" ? monster.face_y/2 : monster.face_y %>px;
       -webkit-transform : scaleX(<%= monster.face_scale_x %>);
       -webkit-transform : scaleY(<%= monster.face_scale_y %>);
       -moz-transform    : scaleX(<%= monster.face_scale_x %>);
@@ -22,8 +22,8 @@
     id="head"
     class="body-part head <%= "draggable" if draggable %>"
     style="
-      left: <%= monster.head_x %>px;
-      top: <%= monster.head_y %>px;
+      left: <%= size == "small" ? monster.head_x/2 : monster.head_x %>px;
+      top: <%= size == "small" ? monster.head_y/2 : monster.head_y %>px;
       -webkit-transform : scaleX(<%= monster.head_scale_x %>);
       -webkit-transform : scaleY(<%= monster.head_scale_y %>);
       -moz-transform    : scaleX(<%= monster.head_scale_x %>);
@@ -41,8 +41,8 @@
     id="torso"
     class="body-part torso <%= "draggable" if draggable %>"
     style="
-      left: <%= monster.torso_x %>px;
-      top: <%= monster.torso_y %>px;
+      left: <%= size == "small" ? monster.torso_x/2 : monster.torso_x %>px;
+      top: <%= size == "small" ? monster.torso_y/2 : monster.torso_y %>px;
       -webkit-transform : scaleX(<%= monster.torso_scale_x %>);
       -webkit-transform : scaleY(<%= monster.torso_scale_y %>);
       -moz-transform    : scaleX(<%= monster.torso_scale_x %>);
@@ -60,8 +60,8 @@
     id="leg"
     class="body-part leg <%= "draggable" if draggable %>"
     style="
-      left: <%= monster.leg_x %>px;
-      top: <%= monster.leg_y %>px;
+      left: <%= size == "small" ? monster.leg_x/2 : monster.leg_x %>px;
+      top: <%= size == "small" ? monster.leg_y/2 : monster.leg_y %>px;
       -webkit-transform : scaleX(<%= monster.leg_scale_x %>);
       -webkit-transform : scaleY(<%= monster.leg_scale_y %>);
       -moz-transform    : scaleX(<%= monster.leg_scale_x %>);

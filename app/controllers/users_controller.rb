@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     skip_before_action :authenticate_user, only: [:new, :create, :like]
-    before_action :set_user, only: [:show, :edit, :update, :destroy]
+    before_action :set_user, only: [:show, :destroy]
 
     #CREATE
     def new
@@ -45,18 +45,6 @@ class UsersController < ApplicationController
 
     def show
       @user = User.find(params[:id])
-    end
-
-    #UPDATE
-    def edit
-    end
-
-    def update
-      if @user.update(user_params)
-        redirect_to user_path(@user)
-      else
-        render :edit
-      end
     end
 
     #DESTROY

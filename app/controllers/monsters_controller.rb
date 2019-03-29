@@ -1,7 +1,7 @@
 class MonstersController < ApplicationController
   skip_before_action :authenticate_user, only: [:index, :home, :show]
-  before_action :set_monster, only: [:show, :edit, :update, :destroy]
-  before_action :set_body_parts, only: [:new, :edit]
+  before_action :set_monster, only: [:show, :update, :destroy]
+  before_action :set_body_parts, only: [:new]
 
 
   def index
@@ -59,19 +59,15 @@ class MonstersController < ApplicationController
     end
   end
 
-  def edit
-
-  end
-
   def update
     # Update happiness if fed
     @monster.update_happiness if (monster_params[:time_last_fed])
 
-    if @monster.update(monster_params)
-      redirect_to @monster
-    else
-      render :edit
-    end
+    # if @monster.update(monster_params)
+    #   redirect_to @monster
+    # else
+    #   render :edit
+    # end
   end
 
   def destroy
@@ -79,7 +75,7 @@ class MonstersController < ApplicationController
     redirect_to root_path
   end
 
-  def  home
+  def home
   end
 
   private

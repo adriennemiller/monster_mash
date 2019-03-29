@@ -65,3 +65,4 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'octicons_helper', '~> 8.5'
+gem "animate-rails"

@@ -7,7 +7,7 @@ class Monster < ApplicationRecord
   has_many :likes
   has_one :entry
   
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 
   def mood
     case self.happiness

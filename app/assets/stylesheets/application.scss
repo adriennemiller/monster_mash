@@ -13,10 +13,12 @@
  */
 //*= require jquery-ui/draggable
 //*= require jquery-ui/slider
+//*= require animate
+
 @import "monsters";
 @import "bootstrap";
 
-.jumbotron{
+.home {
 	background-image: url("background.svg");
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -35,4 +37,8 @@ body {
 
 #top-padding {
   padding-top: 50px;
+}
+
+.card {
+  margin: 2em;
 }

@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   resources :beauty_contests
   root 'monsters#home'
   resources :body_parts
-  resources :monsters
-  resources :users
+  resources :monsters, except: [:edit]
+  resources :users, except: [:edit, :update]
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

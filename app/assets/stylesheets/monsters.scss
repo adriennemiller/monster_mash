@@ -8,7 +8,6 @@
 
 .monster-canvas {
   position: relative;
-  border: 2px solid black;
 }
 
 .monster-canvas.large {
@@ -19,6 +18,10 @@
 .monster-canvas.small {
   width: 200px;
   height: 200px;
+}
+
+.monster-canvas.bordered {
+  border: 2px solid rgba(255, 0, 0, 0.35)
 }
 
 .body-part {

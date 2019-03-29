@@ -14,22 +14,26 @@
         <div class="card-body">
           <span style="float: left">
             <% if @is_user_owner %>
-              <%= form_for(@monster) do |f| %>
-                <%= f.hidden_field :time_last_fed, value: Time.zone.now %>
-                <%= f.submit 'Feed', class: "btn btn-primary" %>
+              <%= form_tag(@monster) do %>
+                <%= hidden_field_tag  name="time_last_fed", value: Time.zone.now %>
+                <button type="submit" name="commit" class="btn btn-md btn-primary">
+                  <span class="icon-button">
+                    <%= octicon "squirrel", fill: 'white' %>&nbsp;&nbsp;Feed
+                  </span>
+                </button>
               <% end %>
             <% end %>
             <%= form_tag like_path do %>
               <% if !@is_user_owner %>
                 <% if !@has_user_liked %>
                   <%= hidden_field_tag name="do_like" %>
-                  <button type="submit" name="commit" class="btn btn-md btn-outline-danger">
+                  <button type="submit" name="commit" class="btn btn-md btn-outline-danger pulse">
                     <span class="icon-button">
                       <%= octicon "heart", fill: 'red' %>&nbsp;&nbsp;Like&nbsp;
                     </span>
                   </button>
                 <% else %>
-                  <button type="submit" name="commit" class="btn btn-md btn-danger">
+                  <button type="submit" name="commit" class="btn btn-md btn-danger pulse">
                     <span class="icon-button" style="color: white">
                       <%= octicon "heart", fill: 'white' %>&nbsp;&nbsp;Liked
                     </span>
@@ -38,7 +42,7 @@
               <% end %>
             <% end %>
           </span>
-          <span style="line-height: 45px; float: right">
+          <span style="line-height: 55px; float: right">
             <%= octicon "heart", :height => 32, fill: 'red' %>&nbsp;<%= Like.where(monster_id: @monster.id).size %>
           </span>
         </div>
@@ -46,7 +50,7 @@
       </div>
     </div>
     <div class="col-md">
-        <%= render partial: "portrait", locals: {monster: @monster, size: 'large', draggable: false} %>
+        <%= render partial: "portrait", locals: {monster: @monster, size: 'large', show_border: false, draggable: false} %>
     </div>
   </div>
 </div>

@@ -1,12 +1,17 @@
 <div class="card" style="width: 200px">
-<%= link_to monster, :action => 'go' do %>
-  <%= render partial: "portrait", locals: {monster: monster, size: 'small', draggable: false} %>
-  <% end %>
+  <span style="border-bottom: 1px solid rgba(0,0,0,0.25)">
+    <%= link_to monster, :action => 'go' do %>
+      <%= render partial: "monsters/portrait", locals: {monster: monster, size: 'small', show_border: false, draggable: false} %>
+    <% end %>
+  </span>
   <div class="card-body">
-    <h5 class="card-title"><%= monster.name %></h5>
-    <p class="card-text">Owner: <%= monster.user.name %></p>
-    <span style="line-height: 45px; float: right">
-      <%= octicon "heart", :height => 32, fill: 'red' %>&nbsp;<%= Like.where(monster_id: monster.id).size %>
+    <%= link_to monster, :action => 'go' do %><h5 class="card-title"><%= monster.name %></h5><% end %>
+    <%= link_to monster.user, :action => 'go' do %><h6 class="card-subtitle mb-2 text-muted"><%= monster.user.name %></h6><%end%>
+    <span style="float: left">
+      <%= octicon "star", height: '24', fill: 'orange' %>
+    </span>
+    <span style="float: right">
+      <%= octicon "heart", height: '24', fill: 'red' %>&nbsp;<%= Like.where(monster_id: monster.id).size %>
     </span>
   </div>
 </div>
