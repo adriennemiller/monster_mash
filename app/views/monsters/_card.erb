@@ -1,6 +1,6 @@
 <%= link_to monster, :action => 'go' do %>
   <div class="card" style="width: 400px">
-    <%= render partial: "portrait", locals: {monster: monster, draggable: false} %>
+    <%= render partial: "monsters/portrait", locals: {monster: monster, draggable: false} %>
     <div class="card-body">
       <h5 class="card-title"><%= monster.name %></h5>
       <p class="card-text">Owner: <%= monster.user.name %></p>

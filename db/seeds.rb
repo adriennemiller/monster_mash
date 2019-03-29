@@ -7,10 +7,12 @@
 #   Character.create!(name: 'Luke', movie: movies.first)
 
 # # USERS
-# include BCrypt
+require './config/secret/keys.rb'
+include BCrypt
+include Keys
 
-# adrienne = User.find_or_create_by!(name: 'ad', password_digest: Password.create('123'))
-# brian = User.find_or_create_by!(name: 'br', password_digest: Password.create('abc'))
+adrienne = User.find_or_create_by!(name: 'adrienne', is_admin?: true, password_digest: Password.create(Keys.adrienne))
+brian = User.find_or_create_by!(name: 'brian', is_admin?: true, password_digest: Password.create(Keys.brian))
 # cody = User.find_or_create_by!(name: 'co', password_digest: Password.create('321'))
 # niky = User.find_or_create_by!(name: 'ni', password_digest: Password.create('cba'))
 

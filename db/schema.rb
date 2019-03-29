@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< Updated upstream
-ActiveRecord::Schema.define(version: 2019_03_28_001343) do
-=======
-ActiveRecord::Schema.define(version: 2019_03_28_192851) do
->>>>>>> Stashed changes
+ActiveRecord::Schema.define(version: 2019_03_28_214239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,17 +29,16 @@ ActiveRecord::Schema.define(version: 2019_03_28_192851) do
     t.string "filename"
   end
 
-<<<<<<< Updated upstream
-  create_table "likes", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "monster_id"
-=======
   create_table "entries", force: :cascade do |t|
     t.integer "beauty_contest_id"
     t.integer "monster_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
->>>>>>> Stashed changes
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "monster_id"
   end
 
   create_table "monsters", force: :cascade do |t|
@@ -81,6 +76,14 @@ ActiveRecord::Schema.define(version: 2019_03_28_192851) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.boolean "is_admin?"
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer "entry_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
