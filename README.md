@@ -1,24 +1,14 @@
-# README
+# Monster Mash
+-------------
+Created by Brian Pak and Adrienne Miller 
+Final project for Flatiron School, Module 2.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app allows users to create an account and create their own monsters by mix and matching different heads/torsos/legs and customizing the size and color. Monsters can be entered into a beauty contest and voted on until the admin ends the contest. Users can also like other users' monsters. 
 
-Things you may want to cover:
+This app was created with Ruby on Rails and Bootstrap (https://getbootstrap.com/).
 
-* Ruby version
+Tools used: 
+Ruby Gem Octicons Helper - https://octicons.github.com/
+Material Design for Bootstrap - https://mdbootstrap.com/
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
