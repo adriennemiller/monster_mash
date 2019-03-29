@@ -17,7 +17,7 @@ class MonstersController < ApplicationController
   def new
     # Default values
     @monster = Monster.new(
-      face_id: @faces.select{|face| face.filename.include?("happy")}.sample.id,
+      face_id: @faces.sample.id,
       face_x: 400/3,
       face_y: 9,
       face_scale: 1.0,

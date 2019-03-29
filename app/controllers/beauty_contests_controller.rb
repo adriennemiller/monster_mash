@@ -1,7 +1,7 @@
 class BeautyContestsController < ApplicationController
   def index
     @contests = BeautyContest.all
-    @active_contest = @contests.size > 0 ? @contests.last : nil
+    @active_contest = @contests.size > 0 ? !@contests.last.has_ended ? @contests.last : nil : nil
   end
 
   def new
