@@ -25,57 +25,29 @@ $(document).on('turbolinks:load', function(){
 
   if ($(".slider").length > 0) {   
     // ======= SLIDER =======
-    $("#face_scale_x").slider({
-      value: $(`#monster_face_scale_x`)[0].value,
+    $("#face_scale").slider({
+      value: $(`#monster_face_scale`)[0].value,
       min: 0.5,
       max: 1.5,
       step: 0.01,
       slide: function( event, ui ) {}
     });
-    $("#face_scale_y").slider({
-      value: $(`#monster_face_scale_y`)[0].value,
+    $("#head_scale").slider({
+      value: $(`#monster_head_scale`)[0].value,
       min: 0.5,
       max: 1.5,
       step: 0.01,
       slide: function( event, ui ) {}
     });
-    $("#head_scale_x").slider({
-      value: $(`#monster_head_scale_x`)[0].value,
+    $("#torso_scale").slider({
+      value: $(`#monster_torso_scale`)[0].value,
       min: 0.5,
       max: 1.5,
       step: 0.01,
       slide: function( event, ui ) {}
     });
-    $("#head_scale_y").slider({
-      value: $(`#monster_head_scale_y`)[0].value,
-      min: 0.5,
-      max: 1.5,
-      step: 0.01,
-      slide: function( event, ui ) {}
-    });
-    $("#torso_scale_x").slider({
-      value: $(`#monster_torso_scale_x`)[0].value,
-      min: 0.5,
-      max: 1.5,
-      step: 0.01,
-      slide: function( event, ui ) {}
-    });
-    $("#torso_scale_y").slider({
-      value: $(`#monster_torso_scale_y`)[0].value,
-      min: 0.5,
-      max: 1.5,
-      step: 0.01,
-      slide: function( event, ui ) {}
-    });
-    $("#leg_scale_x").slider({
-      value: $(`#monster_leg_scale_x`)[0].value,
-      min: 0.5,
-      max: 1.5,
-      step: 0.01,
-      slide: function( event, ui ) {}
-    });
-    $("#leg_scale_y").slider({
-      value: $(`#monster_leg_scale_y`)[0].value,
+    $("#leg_scale").slider({
+      value: $(`#monster_leg_scale`)[0].value,
       min: 0.5,
       max: 1.5,
       step: 0.01,
@@ -85,18 +57,18 @@ $(document).on('turbolinks:load', function(){
     $(".slider").on( "slide", function( event, ui ) {
       field_scale = $(`#monster_${$(this).attr("id")}`)[0]
       section = $(this).attr("id").split('_')[0]
-      orientation = $(this).attr("id").split('_').pop().toUpperCase()
-      set_field_value_to_slider_value(field_scale, ui.value, section, orientation)
+      set_field_value_to_slider_value(field_scale, ui.value, section)
     });
 
-    function set_field_value_to_slider_value(field, val, section, orientation) {
+    function set_field_value_to_slider_value(field, val, section) {
       field.value = val
+
       $(`#${section}`).css({
-        '-webkit-transform' : `scale${orientation}(${val})`,
-        '-moz-transform'    : `scale${orientation}(${val})`,
-        '-ms-transform'     : `scale${orientation}(${val})`,
-        '-o-transform'      : `scale${orientation}(${val})`,
-        'transform'         : `scale${orientation}(${val})`
+        '-webkit-transform' : `scale(${val})`,
+        '-moz-transform'    : `scale(${val})`,
+        '-ms-transform'     : `scale(${val})`,
+        '-o-transform'      : `scale(${val})`,
+        'transform'         : `scale(${val})`,
       });
     }
   }

@@ -5,16 +5,11 @@
     style="
       left: <%= size == "small" ? monster.face_x/2 : monster.face_x %>px;
       top: <%= size == "small" ? monster.face_y/2 : monster.face_y %>px;
-      -webkit-transform : scaleX(<%= monster.face_scale_x %>);
-      -webkit-transform : scaleY(<%= monster.face_scale_y %>);
-      -moz-transform    : scaleX(<%= monster.face_scale_x %>);
-      -moz-transform    : scaleY(<%= monster.face_scale_y %>);
-      -ms-transform     : scaleX(<%= monster.face_scale_x %>);
-      -ms-transform     : scaleY(<%= monster.face_scale_y %>);
-      -o-transform      : scaleX(<%= monster.face_scale_x %>);
-      -o-transform      : scaleY(<%= monster.face_scale_y %>);
-      transform         : scaleX(<%= monster.face_scale_x %>);
-      transform         : scaleY(<%= monster.face_scale_y %>);
+      -webkit-transform : scale(<%= monster.face_scale %>);
+      -moz-transform    : scale(<%= monster.face_scale %>);
+      -ms-transform     : scale(<%= monster.face_scale %>);
+      -o-transform      : scale(<%= monster.face_scale %>);
+      transform         : scale(<%= monster.face_scale %>);
     "
     src="<%= asset_path("faces/#{monster.face.filename}.svg") %>"
   />
@@ -24,16 +19,11 @@
     style="
       left: <%= size == "small" ? monster.head_x/2 : monster.head_x %>px;
       top: <%= size == "small" ? monster.head_y/2 : monster.head_y %>px;
-      -webkit-transform : scaleX(<%= monster.head_scale_x %>);
-      -webkit-transform : scaleY(<%= monster.head_scale_y %>);
-      -moz-transform    : scaleX(<%= monster.head_scale_x %>);
-      -moz-transform    : scaleY(<%= monster.head_scale_y %>);
-      -ms-transform     : scaleX(<%= monster.head_scale_x %>);
-      -ms-transform     : scaleY(<%= monster.head_scale_y %>);
-      -o-transform      : scaleX(<%= monster.head_scale_x %>);
-      -o-transform      : scaleY(<%= monster.head_scale_y %>);
-      transform         : scaleX(<%= monster.head_scale_x %>);
-      transform         : scaleY(<%= monster.head_scale_y %>);
+      -webkit-transform : scale(<%= monster.head_scale %>);
+      -moz-transform    : scale(<%= monster.head_scale %>);
+      -ms-transform     : scale(<%= monster.head_scale %>);
+      -o-transform      : scale(<%= monster.head_scale %>);
+      transform         : scale(<%= monster.head_scale %>);
     "
     src="<%= asset_path("heads/#{monster.head.filename}.svg") %>"
   />
@@ -43,16 +33,11 @@
     style="
       left: <%= size == "small" ? monster.torso_x/2 : monster.torso_x %>px;
       top: <%= size == "small" ? monster.torso_y/2 : monster.torso_y %>px;
-      -webkit-transform : scaleX(<%= monster.torso_scale_x %>);
-      -webkit-transform : scaleY(<%= monster.torso_scale_y %>);
-      -moz-transform    : scaleX(<%= monster.torso_scale_x %>);
-      -moz-transform    : scaleY(<%= monster.torso_scale_y %>);
-      -ms-transform     : scaleX(<%= monster.torso_scale_x %>);
-      -ms-transform     : scaleY(<%= monster.torso_scale_y %>);
-      -o-transform      : scaleX(<%= monster.torso_scale_x %>);
-      -o-transform      : scaleY(<%= monster.torso_scale_y %>);
-      transform         : scaleX(<%= monster.torso_scale_x %>);
-      transform         : scaleY(<%= monster.torso_scale_y %>);
+      -webkit-transform : scale(<%= monster.torso_scale %>);
+      -moz-transform    : scale(<%= monster.torso_scale %>);
+      -ms-transform     : scale(<%= monster.torso_scale %>);
+      -o-transform      : scale(<%= monster.torso_scale %>);
+      transform         : scale(<%= monster.torso_scale %>);
     "
     src="<%= asset_path("torsos/#{monster.torso.filename}.svg") %>"
   />
@@ -62,16 +47,11 @@
     style="
       left: <%= size == "small" ? monster.leg_x/2 : monster.leg_x %>px;
       top: <%= size == "small" ? monster.leg_y/2 : monster.leg_y %>px;
-      -webkit-transform : scaleX(<%= monster.leg_scale_x %>);
-      -webkit-transform : scaleY(<%= monster.leg_scale_y %>);
-      -moz-transform    : scaleX(<%= monster.leg_scale_x %>);
-      -moz-transform    : scaleY(<%= monster.leg_scale_y %>);
-      -ms-transform     : scaleX(<%= monster.leg_scale_x %>);
-      -ms-transform     : scaleY(<%= monster.leg_scale_y %>);
-      -o-transform      : scaleX(<%= monster.leg_scale_x %>);
-      -o-transform      : scaleY(<%= monster.leg_scale_y %>);
-      transform         : scaleX(<%= monster.leg_scale_x %>);
-      transform         : scaleY(<%= monster.leg_scale_y %>);
+      -webkit-transform : scale(<%= monster.leg_scale %>);
+      -moz-transform    : scale(<%= monster.leg_scale %>);
+      -ms-transform     : scale(<%= monster.leg_scale %>);
+      -o-transform      : scale(<%= monster.leg_scale %>);
+      transform         : scale(<%= monster.leg_scale %>);
     "
     src="<%= asset_path("legs/#{monster.leg.filename}.svg") %>"
   >

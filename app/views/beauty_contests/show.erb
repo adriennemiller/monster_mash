@@ -1,27 +1,32 @@
 
-<% if !@has_entered && !@contest.has_ended && !@is_full %>
-  <%= form_for @contest do |f| %>
-    <%= f.collection_select :entry_monster_id, @user.monsters, :id, :name %>
-    <%= f.submit %>
-  <% end %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <% @monsters.each do |monster| %>
+      <% if monster == @contest.get_winner %>
+        WINNER
+      <% end %>
+      <%= render partial: "monsters/card", locals: {monster: monster } %>
+    <% end %>
 
-<% if !@monsters.empty? && !@contest.has_ended %>
-  <%= form_for @contest do |f| %>
-    <%= f.collection_select :vote_monster_id, @monsters, :id, :name %>
-    <%= f.submit "Vote!" %>
-  <% end %>
-<% end %>
+    <% if !@monsters.empty? && !@contest.has_ended %>
+      <%= form_for @contest do |f| %>
+        <%= f.collection_select :vote_monster_id, @monsters, :id, :name %>
+        <%= f.submit "Vote!" %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="row">
+    <% if !@has_entered && !@contest.has_ended && !@is_full %>
+      <%= form_for @contest do |f| %>
+        <%= f.collection_select :entry_monster_id, @user.monsters, :id, :name %>
+        <%= f.submit %>
+      <% end %>
+    <% end %>
 
-
-<% @monsters.each do |monster| %>
-<% if monster == @contest.get_winner %>
-WINNER
-<% end %>
-<%= render partial: "monsters/card", locals: {monster: monster } %>
-<% end %>
-
-<%= form_for @contest do |f| %>
-  <%= f.hidden_field :end_contest%>
-  <%= f.submit "End Contest" %>
-<% end %>
+    <!-- for admins -->
+    <%= form_for @contest do |f| %>
+      <%= f.hidden_field :end_contest%>
+      <%= f.submit "End Contest" %>
+    <% end %>
+  </div>
+</div>

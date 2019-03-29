@@ -63,15 +63,15 @@ class Monster < ApplicationRecord
     weight = 0
 
     if self.head_id
-      weight += 10 * self.head_scale_x
+      weight += 10 * self.head_scale
     end
 
     if self.torso_id
-      weight += 20 * self.torso_scale_x
+      weight += 20 * self.torso_scale
     end
 
     if self.leg_id
-      weight += 15 * self.leg_scale_x
+      weight += 15 * self.leg_scale
     end
 
     (weight - self.name.length/5.0).round(2)

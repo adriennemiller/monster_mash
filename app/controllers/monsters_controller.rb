@@ -20,26 +20,22 @@ class MonstersController < ApplicationController
       face_id: @faces.select{|face| face.filename.include?("happy")}.sample.id,
       face_x: 400/3,
       face_y: 9,
-      face_scale_x: 1.0,
-      face_scale_y: 1.0,
+      face_scale: 1.0,
 
       head_id: @heads.sample.id,
       head_x: 400/3,
       head_y: 0,
-      head_scale_x: 1.0,
-      head_scale_y: 1.0,
+      head_scale: 1.0,
 
       torso_id: @torsos.sample.id,
       torso_x: 400/3,
       torso_y: 360/3,
-      torso_scale_x: 1.0,
-      torso_scale_y: 1.0,
+      torso_scale: 1.0,
 
       leg_id: @legs.sample.id,
       leg_x: 400/3,
       leg_y: 759/3,
-      leg_scale_x: 1.0,
-      leg_scale_y: 1.0,
+      leg_scale: 1.0,
     )
   end
 
@@ -63,9 +59,9 @@ class MonstersController < ApplicationController
       # Gain weight
       if flash[:overfed]
         @monster.update(
-          head_scale_x: @monster.head_scale_x * 1.001,
-          torso_scale_x: @monster.torso_scale_x * 1.001,
-          leg_scale_x: @monster.leg_scale_x * 1.001
+          head_scale: @monster.head_scale * 1.001,
+          torso_scale: @monster.torso_scale * 1.001,
+          leg_scale: @monster.leg_scale * 1.001
         )
       end
 

@@ -60,14 +60,10 @@ ActiveRecord::Schema.define(version: 2019_03_28_214239) do
     t.integer "face_id"
     t.integer "face_x"
     t.integer "face_y"
-    t.float "face_scale_x"
-    t.float "face_scale_y"
-    t.float "head_scale_x"
-    t.float "head_scale_y"
-    t.float "torso_scale_x"
-    t.float "torso_scale_y"
-    t.float "leg_scale_x"
-    t.float "leg_scale_y"
+    t.float "face_scale"
+    t.float "head_scale"
+    t.float "torso_scale"
+    t.float "leg_scale"
     t.boolean "has_won_contest"
   end
 
