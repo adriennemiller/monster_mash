@@ -21,9 +21,13 @@
     <!-- Required meta tags -->
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <link rel='icon' href='/favicon.ico'/>
   </head>
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
+
+
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light nav-bar-color fixed-top">
     <div class="container">
+      <%= link_to image_tag("logo.svg", alt: "logo"), '/', class: 'navbar-brand' %>
       <a class="navbar-brand" href="/">Monster Mash</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

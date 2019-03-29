@@ -25,14 +25,29 @@
 
 .home {
   margin-top: -24px;
+	min-height: 1050px;
 }
 
 body {
   margin-top: 80px;
   font-family: "Londrina Solid", sans-serif;
   letter-spacing: 1px;
+	/* The image used */
+	background-image: url("page-background.svg");
+	min-height: 600px;
+	/* Full height */
+
+
+	/* Center and scale the image nicely */
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 #top-padding {
   padding-top: 50px;
+}
+
+.nav-bar-color {
+	background-color: #DCF2FD;
 }
