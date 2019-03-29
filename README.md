@@ -1,5 +1,4 @@
 # Monster Mash
--------------
 Created by Brian Pak and Adrienne Miller 
 
 Final project for Flatiron School, Module 2.
