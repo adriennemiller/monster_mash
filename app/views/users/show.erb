@@ -3,7 +3,7 @@
     <h1><%= @user.name %>'s Monsters</h1>
   </div>
   
-    <div class="row">
+    <div class="row content-scroll">
       <% @user.monsters.each do |monster| %>
         <div class="col-md-3">
           <%= render partial: "monsters/card", locals: {monster: monster} %>

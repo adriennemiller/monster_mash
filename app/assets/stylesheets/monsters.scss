@@ -104,3 +104,8 @@ label {
      -2px 2px 0 #000,
       2px 2px 0 #000;
 }
+
+.content-scroll {
+  max-height: 75vh;
+  overflow: auto;
+}
