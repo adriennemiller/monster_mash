@@ -1,12 +1,21 @@
 <div class="container">
   <h1>Create New Monster</h1>
+
+  <% if @monster.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <%= @monster.errors.full_messages.first %>
+    </div>
+  <% end %>
+
   <div class="row">
     <div class="col-md">
       <%= render partial: "form", locals: {monster: @monster} %>
     </div>
 
     <div class="col-md">
-      <%= render partial: "portrait", locals: {monster: @monster, size: 'large', draggable: true} %>
+      <div class="preview-container">
+        <%= render partial: "portrait", locals: {monster: @monster, size: 'large', draggable: true} %>
+      </div>
     </div>
   </div>
 </div>

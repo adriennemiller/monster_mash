@@ -13,6 +13,7 @@
  */
 //*= require jquery-ui/draggable
 //*= require jquery-ui/slider
+
 @import "monsters";
 @import "bootstrap";
 
@@ -29,14 +30,15 @@
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
+	margin-top: -100px;
 }
+
 
 body {
   font-family: "Londrina Solid", sans-serif;
   letter-spacing: 1px;
 	/* The image used */
 	background-image: url("page-background.svg");
-	padding-top: 100px;
 	/* Full height */
 	height: 100vh;
 	width: 100vw;
@@ -44,12 +46,20 @@ body {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
+	overflow: hidden;
+}
+
+.page {
+	padding-top: 100px;
 }
 
 .top-padding {
-  padding-top: -50px;
+  padding-top: 100px;
 }
 
+.card {
+  margin: 2em;
+}
 .nav-bar-color {
 	background-color: #fff;
 }

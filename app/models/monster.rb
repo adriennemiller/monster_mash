@@ -7,7 +7,7 @@ class Monster < ApplicationRecord
   has_many :likes
   has_one :entry
   
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 
   def mood
     case self.happiness
@@ -63,18 +63,18 @@ class Monster < ApplicationRecord
     weight = 0
 
     if self.head_id
-      weight += 10 * self.head_scale_x
+      weight += 10 * self.head_scale
     end
 
     if self.torso_id
-      weight += 20 * self.torso_scale_x
+      weight += 20 * self.torso_scale
     end
 
     if self.leg_id
-      weight += 15 * self.leg_scale_x
+      weight += 15 * self.leg_scale
     end
 
-    weight - self.name.length/5.0
+    (weight - self.name.length/5.0).round(2)
   end
 
   def get_hours_since_last_fed

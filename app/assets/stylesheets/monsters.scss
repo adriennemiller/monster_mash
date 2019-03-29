@@ -8,7 +8,6 @@
 
 .monster-canvas {
   position: relative;
-  border: 2px solid black;
 }
 
 .monster-canvas.large {
@@ -19,6 +18,14 @@
 .monster-canvas.small {
   width: 200px;
   height: 200px;
+}
+
+.preview-container {
+  display: inline-block;
+  border: 2px solid rgba(255, 0, 0, 0.35);
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 0;
+  margin: 0;
 }
 
 .body-part {
@@ -75,4 +82,30 @@ label {
 
 .body-container {
   display: inline-block;
+}
+
+.contest {
+  padding: 1em;
+  background-image: url("contest-bg.svg");
+  background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.vote-select {
+  height: 38px;
+}
+
+.winner-text {
+  font-size: 2em;
+  color: white;
+  text-shadow:
+    -2px -2px 0 #000,  
+     2px -2px 0 #000,
+     -2px 2px 0 #000,
+      2px 2px 0 #000;
+}
+
+.content-scroll {
+  max-height: 75vh;
+  overflow: auto;
 }

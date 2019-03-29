@@ -1,8 +1,7 @@
 class MonstersController < ApplicationController
   skip_before_action :authenticate_user, only: [:index, :home, :show]
-  before_action :set_monster, only: [:show, :edit, :update, :destroy]
-  before_action :set_body_parts, only: [:new, :edit]
-
+  before_action :set_monster, only: [:show, :update, :destroy]
+  before_action :set_body_parts, only: [:new]
 
   def index
     @monsters = Monster.all
@@ -18,32 +17,25 @@ class MonstersController < ApplicationController
   def new
     # Default values
     @monster = Monster.new(
-      face_id: @faces.select{|face| face.filename.include?("happy")}.sample.id,
+      face_id: @faces.sample.id,
       face_x: 400/3,
       face_y: 9,
-      face_scale_x: 1.0,
-      face_scale_y: 1.0,
+      face_scale: 1.0,
 
       head_id: @heads.sample.id,
       head_x: 400/3,
       head_y: 0,
-      head_scale_x: 1.0,
-      head_scale_y: 1.0,
+      head_scale: 1.0,
 
       torso_id: @torsos.sample.id,
       torso_x: 400/3,
       torso_y: 360/3,
-      torso_scale_x: 1.0,
-      torso_scale_y: 1.0,
+      torso_scale: 1.0,
 
       leg_id: @legs.sample.id,
       leg_x: 400/3,
       leg_y: 759/3,
-      leg_scale_x: 1.0,
-      leg_scale_y: 1.0,
-
-      happiness: 10,
-      time_last_fed: Time.zone.now
+      leg_scale: 1.0,
     )
   end
 
@@ -51,27 +43,37 @@ class MonstersController < ApplicationController
   def create
     user = User.find_by(id: session[:user_id])
     @monster = user.monsters.build(monster_params)
-
+    
     if @monster.save
+      @monster.update(happiness: 10, time_last_fed: Time.zone.now)
       redirect_to @monster
     else
       render :new
     end
   end
 
-  def edit
-
-  end
-
   def update
-    # Update happiness if fed
-    @monster.update_happiness if (monster_params[:time_last_fed])
+    if (monster_params[:time_last_fed])
+      flash[:overfed] = (@monster.time_last_fed - Time.parse(monster_params[:time_last_fed])) / 3600 < 24
 
-    if @monster.update(monster_params)
-      redirect_to @monster
-    else
-      render :edit
+      # Gain weight
+      if flash[:overfed]
+        @monster.update(
+          head_scale: @monster.head_scale * 1.001,
+          torso_scale: @monster.torso_scale * 1.001,
+          leg_scale: @monster.leg_scale * 1.001
+        )
+      end
+
+      # Update happiness if fed
+      @monster.update_happiness 
     end
+
+     if @monster.update(monster_params)
+       redirect_to @monster
+    # else
+    #   render :edit
+     end
   end
 
   def destroy
@@ -79,7 +81,7 @@ class MonstersController < ApplicationController
     redirect_to root_path
   end
 
-  def  home
+  def home
   end
 
   private

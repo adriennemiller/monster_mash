@@ -11,6 +11,7 @@ require './config/secret/keys.rb'
 include BCrypt
 include Keys
 
+# ADMINS
 adrienne = User.find_or_create_by!(name: 'adrienne', is_admin?: true, password_digest: Password.create(Keys.adrienne))
 brian = User.find_or_create_by!(name: 'brian', is_admin?: true, password_digest: Password.create(Keys.brian))
 # cody = User.find_or_create_by!(name: 'co', password_digest: Password.create('321'))
@@ -28,55 +29,3 @@ brian = User.find_or_create_by!(name: 'brian', is_admin?: true, password_digest:
     end
   end
 end
-
-# # Create random monsters
-# new_monster =
-#   {
-#     face_id: BodyPart.where(section: 'face').first.id,
-#     face_x: 0,
-#     face_y: 0,
-#     face_scale_x: 1.0,
-#     face_scale_y: 1.0,
-
-#     head_id: BodyPart.where(section: 'head').sample.id,
-#     head_x: 400/3,
-#     head_y: 0,
-#     head_scale_x: 1.0,
-#     head_scale_y: 1.0,
-
-#     torso_id: BodyPart.where(section: 'torso').sample.id,
-#     torso_x: 400/3,
-#     torso_y: 400/3 - 4,
-#     torso_scale_x: 1.0,
-#     torso_scale_y: 1.0,
-
-#     leg_id: BodyPart.where(section: 'leg').sample.id,
-#     leg_x: 400/3,
-#     leg_y: 800/3 - 8,
-#     leg_scale_x: 1.0,
-#     leg_scale_y: 1.0,
-
-#     happiness: 10,
-#     time_last_fed: Time.zone.now
-#   }
-
-# m1 = new_monster
-# m1[:name] = "Sullivan"
-# m2 = new_monster
-# m2[:name] = "Vim"
-# m3 = new_monster
-# m3[:name] = "Randal"
-# m4 = new_monster
-# m4[:name] = "Boo"
-# m5 = new_monster
-# m5[:name] = "Mike"
-# m6 = new_monster
-# m6[:name] = "Bowser"
-
-# # MONSTERS
-# sullivan = adrienne.monsters.find_or_create_by!(m1)
-# mike = adrienne.monsters.find_or_create_by!(m2)
-# vim = brian.monsters.find_or_create_by!(m3)
-# randal = brian.monsters.find_or_create_by!(m4)
-# boo = cody.monsters.find_or_create_by!(m5)
-# st = niky.monsters.find_or_create_by!(m6)

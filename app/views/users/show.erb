@@ -1,78 +1,13 @@
 <div class="container body-padding">
   <div>
-    <h1><%= @user.name %></h1>
+    <h1><%= @user.name %>'s Monsters</h1>
   </div>
-
-<div class="container">
-  <div class="row">
-    <div class="col">
-  <% @user.monsters.each do |monster| %>
-  <div class="card-body">
-  <%= link_to "#{monster.name}", monster, class: "btn btn-outline-primary btn-rounded btn-block my-4 waves-effect z-depth-0" %>
-  <div class= "monster-canvas">
-         <img
-           id="head"
-           class="body-part head"
-           style="
-             left: <%= monster.head_x %>px;
-             top: <%= monster.head_y %>px;
-             -webkit-transform : scaleX(<%= monster.head_scale_x %>);
-             -webkit-transform : scaleY(<%= monster.head_scale_y %>);
-             -moz-transform    : scaleX(<%= monster.head_scale_x %>);
-             -moz-transform    : scaleY(<%= monster.head_scale_y %>);
-             -ms-transform     : scaleX(<%= monster.head_scale_x %>);
-             -ms-transform     : scaleY(<%= monster.head_scale_y %>);
-             -o-transform      : scaleX(<%= monster.head_scale_x %>);
-             -o-transform      : scaleY(<%= monster.head_scale_y %>);
-             transform         : scaleX(<%= monster.head_scale_x %>);
-             transform         : scaleY(<%= monster.head_scale_y %>);
-           "
-           src="<%= asset_path("heads/#{monster.head.filename}.svg") %>"
-         />
-         <img
-           id="torso"
-           class="body-part torso"
-           style="
-             left: <%= monster.torso_x %>px;
-             top: <%= monster.torso_y %>px;
-             -webkit-transform : scaleX(<%= monster.torso_scale_x %>);
-             -webkit-transform : scaleY(<%= monster.torso_scale_y %>);
-             -moz-transform    : scaleX(<%= monster.torso_scale_x %>);
-             -moz-transform    : scaleY(<%= monster.torso_scale_y %>);
-             -ms-transform     : scaleX(<%= monster.torso_scale_x %>);
-             -ms-transform     : scaleY(<%= monster.torso_scale_y %>);
-             -o-transform      : scaleX(<%= monster.torso_scale_x %>);
-             -o-transform      : scaleY(<%= monster.torso_scale_y %>);
-             transform         : scaleX(<%= monster.torso_scale_x %>);
-             transform         : scaleY(<%= monster.torso_scale_y %>);
-           "
-           src="<%= asset_path("torsos/#{monster.torso.filename}.svg") %>"
-         />
-         <img
-           id="leg"
-           class="body-part leg"
-           style="
-             left: <%= monster.leg_x %>px;
-             top: <%= monster.leg_y %>px;
-             -webkit-transform : scaleX(<%= monster.leg_scale_x %>);
-             -webkit-transform : scaleY(<%= monster.leg_scale_y %>);
-             -moz-transform    : scaleX(<%= monster.leg_scale_x %>);
-             -moz-transform    : scaleY(<%= monster.leg_scale_y %>);
-             -ms-transform     : scaleX(<%= monster.leg_scale_x %>);
-             -ms-transform     : scaleY(<%= monster.leg_scale_y %>);
-             -o-transform      : scaleX(<%= monster.leg_scale_x %>);
-             -o-transform      : scaleY(<%= monster.leg_scale_y %>);
-             transform         : scaleX(<%= monster.leg_scale_x %>);
-             transform         : scaleY(<%= monster.leg_scale_y %>);
-           "
-           src="<%= asset_path("legs/#{monster.leg.filename}.svg") %>"
-
-       </div>
-      </div>
-<% end %>
-</div>
-</div>
-</div>
-</div>
-  <%= button_to "Delete Profile",{ action: "destroy", id: @user.id }, method: :delete, data: {confirm: "Are you sure?"} %>
-</div>
+  
+    <div class="row content-scroll">
+      <% @user.monsters.each do |monster| %>
+        <div class="col-md-3">
+          <%= render partial: "monsters/card", locals: {monster: monster} %>
+        </div>
+      <% end %>
+    </div>
+  </div>

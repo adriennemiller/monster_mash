@@ -1,0 +1,29 @@
+<div class="container">
+<h1>Contests</h1>
+  <% if @active_contest %>
+    <%= link_to @active_contest, :action => 'go' do %>
+      <div class="alert alert-primary" role="alert">
+        <h1 class="display-4">Active Contest <%= @active_contest.created_at.to_date %></h1>
+      </div>
+    <% end %>
+    <br>
+    <% if @contests.size > 0%>
+      <hr>
+      <div class="content-scroll">
+      <br>
+      <h2>Previous Contests</h2>
+      <ol>
+        <% @contests.first(@contests.size - 1).each do |contest| %>
+          <li><%= link_to "Contest #{contest.created_at.to_date}", contest %></li>
+        <% end %>
+      </ol>
+      </div>
+      <% end %>
+  <% else %>
+    <div class="alert alert-warning" role="alert">
+      <h1 class="display-4">Active Contest</h1>
+      <p class="lead">There are currently no ongoing contests.</p>
+    </div>
+  <% end %>
+</div>
+

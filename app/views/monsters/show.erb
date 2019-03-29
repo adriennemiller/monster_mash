@@ -14,9 +14,13 @@
         <div class="card-body">
           <span style="float: left">
             <% if @is_user_owner %>
-              <%= form_for(@monster) do |f| %>
+              <%= form_for @monster do |f| %>
                 <%= f.hidden_field :time_last_fed, value: Time.zone.now %>
-                <%= f.submit 'Feed', class: "btn btn-primary" %>
+                <button type="submit" name="commit" class="btn btn-md btn-primary">
+                  <span class="icon-button">
+                    <%= octicon "squirrel", fill: 'white' %>&nbsp;&nbsp;Feed
+                  </span>
+                </button>
               <% end %>
             <% end %>
             <%= form_tag like_path do %>
@@ -38,7 +42,7 @@
               <% end %>
             <% end %>
           </span>
-          <span style="line-height: 45px; float: right">
+          <span style="line-height: 55px; float: right">
             <%= octicon "heart", :height => 32, fill: 'red' %>&nbsp;<%= Like.where(monster_id: @monster.id).size %>
           </span>
         </div>
@@ -49,5 +53,10 @@
         <%= render partial: "portrait", locals: {monster: @monster, size: 'large', draggable: false} %>
     </div>
   </div>
+  <% if flash[:overfed] %>
+    <div class="alert alert-warning" role="alert">
+      You fed <%= @monster.name %> today.
+    </div>
+  <% end %>
 </div>
 
