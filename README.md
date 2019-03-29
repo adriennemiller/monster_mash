@@ -7,8 +7,9 @@ This app allows users to create an account and create their own monsters by mix 
 
 This app was created with Ruby on Rails and Bootstrap (https://getbootstrap.com/).
 
+```
 Tools used: 
 Ruby Gem Octicons Helper - https://octicons.github.com/
 Material Design for Bootstrap - https://mdbootstrap.com/
-
+```
 
