@@ -1,28 +1,61 @@
 
 <div class="container">
-  <div class="row">
-    <% @monsters.each do |monster| %>
-      <% if monster == @contest.get_winner %>
-        WINNER
+    <h1>Contestants</h1>
+  <div class="row text-center">
+    <!-- Display Contestants -->
+      <% @monsters.each do |monster| %>
+        <% if monster == @contest.get_winner %>
+          <div class="contestant-portrait">
+            <span class="winner-text">WINNER!</span>
+            <%= render partial: "monsters/portrait", locals: {monster: monster, size: 'small', draggable: false}  %>
+            <p style="font-size: 1.5em" class="badge badge-success"><%= monster.name %></p>
+          </div>
+        <% else %>
+          <div class="contestant-portrait">
+            <div style="visibility: hidden" class="winner-text">WINNER!</div>
+            <%= render partial: "monsters/portrait", locals: {monster: monster, size: 'small', draggable: false}  %>
+            <p style="font-size: 1.5em" class="badge badge-secondary"><%= monster.name %></p>
+          </div>
+        <% end %>
       <% end %>
-      <%= render partial: "monsters/card", locals: {monster: monster } %>
-    <% end %>
 
-    <% if !@monsters.empty? && !@contest.has_ended %>
-      <%= form_for @contest do |f| %>
-        <%= f.collection_select :vote_monster_id, @monsters, :id, :name %>
-        <%= f.submit "Vote!" %>
+      <% if @contest.entries.size == 0 %>
+        <div style="width: 100%">
+          <div class="alert alert-warning" role="alert">
+            No contestants yet. Be the first!
+          </div>
+        </div>
       <% end %>
-    <% end %>
+
+    </div>
+    <br>
+      <!-- Enter Contest -->
+      <div class="row">
+      <% if !@has_entered && !@contest.has_ended && !@is_full %>
+        <%= form_for @contest do |f| %>
+          <%= f.collection_select :entry_monster_id, @user.monsters, :id, :name, {}, {class: 'vote-select'} %>
+          <%= f.submit "Enter Contest", class: 'btn btn-info'  %>
+        <% end %>
+      <% end %>
+      </div>
+    <hr>
+  <div class="row">
+    <!-- Vote -->
+      <% if !@monsters.empty? && !@contest.has_ended %>
+        <%= form_for @contest do |f| %>
+          <%= f.collection_select :vote_monster_id, @monsters, :id, :name, {}, {class: 'vote-select'} %>
+          <%= f.submit "Vote!", class: 'btn btn-primary '%>
+        <% end %>
+      <% end %>
+      <% if @vote_option %>
+        <div class="alert alert-success" role="alert">
+          <%= octicon "check", fill: 'green' %>&nbsp;&nbsp;You voted for <%= @vote_option %>.
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div class="row">
-    <% if !@has_entered && !@contest.has_ended && !@is_full %>
-      <%= form_for @contest do |f| %>
-        <%= f.collection_select :entry_monster_id, @user.monsters, :id, :name %>
-        <%= f.submit %>
-      <% end %>
-    <% end %>
 
+  <div class="row">
     <!-- for admins -->
     <%= form_for @contest do |f| %>
       <%= f.hidden_field :end_contest%>

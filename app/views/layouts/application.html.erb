@@ -37,7 +37,7 @@
           <% if logged_in? %>
           <li class="nav-item"> <%= link_to "Create Monster", new_monster_path, class: "nav-link" %></li>
           <li class="nav-item"> <%= link_to "Monsters", monsters_path, class: "nav-link" %></li>
-          <li class="nav-item"> <%= link_to "Contests", contests_path, class: "nav-link" %></li>
+          <li class="nav-item"> <%= link_to "Contests", beauty_contests_path, class: "nav-link" %></li>
           <li class="nav-item"> <%= link_to "My Profile", user_path(User.find_by(id: session[:user_id])), class: "nav-link" %></li>
           <li class="nav-item"> <%= link_to "Log Out", logout_path, class: "nav-link", method: 'delete'%></li>
           <% else %>

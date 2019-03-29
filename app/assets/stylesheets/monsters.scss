@@ -83,3 +83,24 @@ label {
 .body-container {
   display: inline-block;
 }
+
+.contest {
+  padding: 1em;
+  background-image: url("contest-bg.svg");
+  background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.vote-select {
+  height: 38px;
+}
+
+.winner-text {
+  font-size: 2em;
+  color: white;
+  text-shadow:
+    -2px -2px 0 #000,  
+     2px -2px 0 #000,
+     -2px 2px 0 #000,
+      2px 2px 0 #000;
+}
