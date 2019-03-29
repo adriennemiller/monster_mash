@@ -13,7 +13,9 @@
     </div>
 
     <div class="col-md">
-      <%= render partial: "portrait", locals: {monster: @monster, size: 'large', show_border: true, draggable: true} %>
+      <div class="preview-container">
+        <%= render partial: "portrait", locals: {monster: @monster, size: 'large', draggable: true} %>
+      </div>
     </div>
   </div>
 </div>

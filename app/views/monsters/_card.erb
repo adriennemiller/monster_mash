@@ -1,7 +1,7 @@
 <div class="card" style="width: 200px">
   <span style="border-bottom: 1px solid rgba(0,0,0,0.25)">
     <%= link_to monster, :action => 'go' do %>
-      <%= render partial: "monsters/portrait", locals: {monster: monster, size: 'small', show_border: false, draggable: false} %>
+      <%= render partial: "monsters/portrait", locals: {monster: monster, size: 'small', draggable: false} %>
     <% end %>
   </span>
   <div class="card-body">

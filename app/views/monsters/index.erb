@@ -1,7 +1,7 @@
 <div class="container">
 <h1>All Monsters</h1>
   <div class="row">
-  <% @monsters.each_with_index do |monster, i| %>
+  <% @monsters.each do |monster| %>
     <div class="col-md-3">
       <%= render partial: "card", locals: {monster: monster} %>
     </div>

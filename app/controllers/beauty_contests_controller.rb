@@ -1,4 +1,8 @@
 class BeautyContestsController < ApplicationController
+  def index
+    @contests = BeautyContest.all
+    @active_contest = @contests.size > 0 ? @contests.last : nil
+  end
 
   def new
     if current_user && !current_user.is_admin?
@@ -28,10 +32,12 @@ class BeautyContestsController < ApplicationController
       contest = BeautyContest.find_by(id: params[:id])
       contest.update(has_ended: true)
       winner = contest.get_winner
-      winner.update(has_won_contest: true)
+      if (winner)
+        winner.update(has_won_contest: true)
+      end
     end
 
-    redirect_to beauty_contest_path(params[:id])
+    redirect_to contest_path(params[:id])
   end
 
   def show
