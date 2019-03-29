@@ -6,6 +6,8 @@
     <div class="form-block">
       <%= f.label :face_id, "Face" %>
       <%= f.collection_select :face_id, BodyPart.where(section: "face").select{|bp| bp.filename.include?("happy")}, :id, :filename %><br>
+      
+      
       <%= f.hidden_field :face_x %>
       <%= f.hidden_field :face_y %>
       <%= f.hidden_field :face_scale_x %>
